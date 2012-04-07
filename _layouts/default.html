@@ -1,0 +1,39 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  {% if site.mode == 'production' %}
+  <link href="/assets/css/mann.css" rel="stylesheet">
+  {% else %}
+  <link href="/assets/css/reset.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/syntax.css" rel="stylesheet">
+  {% endif %} 
+  <title>{{ page.title }}</title>
+
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div id="sidebar">
+    <h1>Edd</h1>
+    <h1>Mann</h1>
+    <nav>
+      <a href="/">Blog</a>
+      <a href="http://github.com/eddmann">Github</a>
+      <a href="/EdwardMannProgrammerCV.pdf">CV</a>
+    </nav>
+    <div class="clear"></div>
+  </div>
+  <div id="content">
+    {{ content }}
+  </div>
+</body>
+</html>
