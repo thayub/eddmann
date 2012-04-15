@@ -1,4 +1,4 @@
 pygments: true
 permalink: /posts/:title
 exclude: Rakefile
-mode: production
+mode: development
