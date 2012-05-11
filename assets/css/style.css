@@ -57,6 +57,12 @@
   margin: 8px auto;
 }
 
+.shadow {
+  -moz-box-shadow: 0 0 10px #888;
+  -webkit-box-shadow: 0 0 10px #888;
+  box-shadow: 0 0 10px #888;
+}
+
 ::-moz-selection { 
   background: #1F1F1F; 
   color: #FFF; 
