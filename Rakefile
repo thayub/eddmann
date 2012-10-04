@@ -17,7 +17,8 @@ end
 
 task :deploy do
   system(%{
-    rsync -avz --delete _site/ user@eddmann.com:/location
+    ssh user@eddmann.com rm -fr /path/to/web/site/*
+    scp -r _site/* user@eddmann.com:/path/to/web/site/
   })
 end
 
