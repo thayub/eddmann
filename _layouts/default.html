@@ -32,11 +32,11 @@
 </head>
 <body>
   <div id="sidebar">
-    <h1>Edd Mann</h1>
-    <nav>
+    <a href="/"><h1{% if page.url == "/index.html" %} class="animated bounceInDown"{% endif %}>Edd Mann</h1></a>
+    <nav{% if page.url == "/index.html" %} class="animated bounceInLeft"{% endif %}>
       <a href="/">Blog</a>
       <a href="http://github.com/eddmann">Github</a>
-      <a href="http://twitter.com/edd_mann">Twitter</a>
+      <a href="http://twitter.com/edd_mann" class="twitter">Twitter</a>
       <a href="/EdwardMannProgrammerCV.pdf">CV</a>
     </nav>
     <div class="clear"></div>
