@@ -25,7 +25,7 @@ $ brew tap josegonzalez/homebrew-php
 $ brew install php54
 {% endhighlight %}
 
-To enable PHP 5.4 for use with Apache you need to replace the uncommented PHP module (from the last step) with <span class="snippet">LoadModule php5_module /usr/local/Cellar/php54/5.4.3/libexec/apache2/libphp5.so</span>.
+To enable PHP 5.4 for use with Apache you need to replace the uncommented PHP module (from the last step) with <span class="snippet">LoadModule php5_module /usr/local/Cellar/php54/5.4.9/libexec/apache2/libphp5.so</span>.
 
 ### MySQL
 
@@ -57,7 +57,7 @@ To install DNSMasq on Mac OSX I have decided to follow a similar process to MySQ
 $ brew install dnsmasq
 {% endhighlight %}
 
-Once successfully downloaded/installed follow the onscreen instructions and copy the configuration file to <span class="snippet">/usr/local/etc/dnsmasq</span>.
+Once successfully downloaded/installed follow the onscreen instructions and copy the configuration file to <span class="snippet">/usr/local/etc/dnsmasq.conf</span>.
 Before continuing on to the second stage of installation however, we need to tell DNSMasq (using the copied configuration file) that we want any address with a [TLD](http://en.wikipedia.org/wiki/Top-level_domain) of <span class="snippet">.dev</span> to loopback to our own machine.
 
 {% highlight bash %}
@@ -66,7 +66,7 @@ listen-address=127.0.0.1
 {% endhighlight %}
 
 We then need to add our loopback address (127.0.0.1) as the first DNS record to our primary network adaptor.
-We do this by going to System Preferences, then Networking, once there we click Advanced and then DNS. 
+We do this by going to System Preferences, then Network, once there we click Advanced and then DNS. 
 Finally we can then add 127.0.0.1 as the first DNS record.
 
 The last step is to setup the last development Apache Virtual Host you will hopefully ever have to look at.
@@ -105,5 +105,5 @@ function newsite() {
 }
 {% endhighlight %}
 
-Now that I have this setup I carn't believe a world without it.
+Now that I have this setup I carn't imagine a world without it.
 All the tedious work required in setting up a new project has now vanished!
