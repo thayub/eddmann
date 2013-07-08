@@ -1,4 +1,0 @@
-pygments: true
-permalink: /posts/:title
-exclude: Rakefile
-mode: development

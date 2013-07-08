@@ -1,5 +1,0 @@
-stylesheets:
-  mann:
-    - _site/assets/css/reset.css
-    - _site/assets/css/style.css
-    - _site/assets/css/syntax.css
