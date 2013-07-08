@@ -1,99 +1,13 @@
+<%@ val posts: List[com.eddmann.blog.models.PostModel] %>
+
 <h3 class="tagline"><span>I make stuff for the web</span> and occasionally ramble about it here.</h3>
 
-<div class="post">
-    <a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><h4>The ultimate MAMP setup, hands down</h4></a>
-    <p>
-        I have been a loyal MAMP Pro user for many years, I fell in love with how easy it was to setup custom hosts, without the need to tweak the hosts file myself.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><h4>The ultimate MAMP setup, hands down</h4></a>
-    <p>
-        I have been a loyal MAMP Pro user for many years, I fell in love with how easy it was to setup custom hosts, without the need to tweak the hosts file myself.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><h4>The ultimate MAMP setup, hands down</h4></a>
-    <p>
-        I have been a loyal MAMP Pro user for many years, I fell in love with how easy it was to setup custom hosts, without the need to tweak the hosts file myself.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post">
-    <a href=""><a href=""><h4>Making Gitflow the way you want it to</h4></a>
-    <p>
-        I have been a part-time Git user for alittle over a year now, before this I had dabbled with using Subversion but never for anything too serious.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post bottom">
-    <a href=""><h4>The ultimate MAMP setup, hands down</h4></a>
-    <p>
-        I have been a loyal MAMP Pro user for many years, I fell in love with how easy it was to setup custom hosts, without the need to tweak the hosts file myself.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post bottom">
-    <a href=""><h4>Decorating the walls of your desktop</h4></a>
-    <p>
-        I have gone through many desktop wallpaper phases in my time, whatta’ strange topic to even discuss.
-    </p>
-    <div class="clr"></div>
-</div>
-
-<div class="post bottom">
-    <a href=""><h4>Decorating the walls of your desktop</h4></a>
-    <p>
-        I have gone through many desktop wallpaper phases in my time, whatta’ strange topic to even discuss.
-    </p>
-    <div class="clr"></div>
-</div>
+<%= unescape(posts.map(post => {
+    <div class="post">
+        <a href=""><h4>{ post.meta.getOrElse("title", "N/A") }</h4></a>
+        <p>{ post.meta.getOrElse("snippet", "N/A") }</p>
+        <div class="clr"></div>
+    </div>
+}).mkString) %>
 
 <div class="clr"></div>

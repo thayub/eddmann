@@ -6,8 +6,9 @@ import org.fusesource.scalate.{ TemplateEngine, Binding }
 import org.fusesource.scalate.layout.DefaultLayoutStrategy
 import javax.servlet.http.HttpServletRequest
 import collection.mutable
+import com.eddmann.blog.models._
 
-class BlogServlet extends ScalatraServlet with ScalateSupport {
+class BlogController extends ScalatraServlet with ScalateSupport {
 
   override protected def defaultTemplatePath: List[String] = List("/WEB-INF/templates/views")
 
@@ -28,7 +29,7 @@ class BlogServlet extends ScalatraServlet with ScalateSupport {
   }
 
   get("/") {
-    ssp("index")
+    ssp("index", "posts" -> PostModel.all)
   }
 
   notFound {
