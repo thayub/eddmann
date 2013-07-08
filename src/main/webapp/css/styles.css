@@ -1,0 +1,166 @@
+html {
+  overflow-y: scroll; }
+
+body {
+  color: gray;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 160%;
+  background: #333; }
+
+.container {
+  width: 900px;
+  margin: auto;
+  padding: 10px 0; }
+
+.clr {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+a {
+  -webkit-transition: color 0.25s, background-color 0.25s;
+  -moz-transition: color 0.25s, background-color 0.25s;
+  -o-transition: color 0.25s, background-color 0.25s;
+  transition: color 0.25s, background-color 0.25s;
+  color: #29bdca;
+  text-decoration: none; }
+
+p {
+  margin-bottom: 20px; }
+
+/**
+ * Typography.
+ */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+  color: #404040;
+  line-height: 1.3em;
+  word-wrap: break-word; }
+
+h1 {
+  float: left;
+  padding-top: 30px;
+  color: #000;
+  line-height: 1em;
+  font-size: 35px; }
+  h1 span {
+    font-size: 25px;
+    color: #F00; }
+
+h2 {
+  font-size: 31px; }
+
+h3 {
+  font-size: 25px; }
+
+h3.tagline {
+  text-align: center;
+  margin-bottom: 50px; }
+  h3.tagline span {
+    background: #00A2FF;
+    color: #FFF;
+    padding: 10px; }
+
+h4 {
+  font-size: 18px; }
+
+h5 {
+  font-size: 16px; }
+
+h6 {
+  font-size: 14px; }
+
+/**
+ * Header.
+ */
+header {
+  background-color: #FFF;
+  height: 110px;
+  width: 100%;
+  -webkit-box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, white 75%, whitesmoke 100%); }
+
+/**
+ * Navigation.
+ */
+nav {
+  float: right;
+  margin-top: 35px;
+  font-size: 16px; }
+  nav ul li {
+    float: left;
+    margin-right: 25px;
+    text-transform: lowercase; }
+    nav ul li a {
+      color: #404040; }
+      nav ul li a:hover {
+        color: #29bdca; }
+
+/**
+ * Content.
+ */
+#content {
+  -webkit-box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 50px 0;
+  background: #FFF;
+  min-height: 400px; }
+
+/**
+ * Footer.
+ */
+footer #latest-tweets {
+  background: #444;
+  -webkit-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  /**
+   * Tweets.
+   */ }
+  footer #latest-tweets .container {
+    padding: 30px 0; }
+  footer #latest-tweets #me {
+    float: left;
+    margin-top: 15px; }
+  footer #latest-tweets #tweets {
+    margin-left: 20px;
+    float: left; }
+    footer #latest-tweets #tweets .tweet {
+      padding: 15px;
+      float: left;
+      color: #999;
+      margin-left: 20px;
+      background: #333333 url(/img/tweet.png) no-repeat bottom left;
+      background-size: 66px; }
+      footer #latest-tweets #tweets .tweet a {
+        color: #BFBFBF; }
+        footer #latest-tweets #tweets .tweet a:hover {
+          color: #29bdca; }
+      footer #latest-tweets #tweets .tweet .message {
+        font-size: 13px;
+        width: 340px;
+        min-height: 60px;
+        margin: 0; }
+      footer #latest-tweets #tweets .tweet .meta {
+        text-align: right;
+        font-size: 11px;
+        margin: 0; }
+footer #details {
+  font-size: 13px;
+  background: #333;
+  -webkit-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2); }
+  footer #details .container {
+    padding: 20px 0 40px 0; }
+  footer #details a {
+    color: #BFBFBF; }

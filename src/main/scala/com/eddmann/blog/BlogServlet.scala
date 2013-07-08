@@ -32,7 +32,8 @@ class BlogServlet extends ScalatraServlet with ScalateSupport {
   }
 
   notFound {
-    resourceNotFound()
+    contentType = null
+    serveStaticResource() getOrElse resourceNotFound()
   }
 
 }
