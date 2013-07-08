@@ -164,3 +164,20 @@ footer #details {
     padding: 20px 0 40px 0; }
   footer #details a {
     color: #BFBFBF; }
+
+/**
+ * Posts.
+ */
+.post {
+  height: 180px;
+  width: 255px;
+  padding: 20px;
+  border-right: 1px dotted #CCC;
+  border-bottom: 1px dotted #CCC;
+  float: left; }
+  .post h4 {
+    margin-bottom: 10px; }
+  .post:nth-child(3n+4) {
+    border-right: 0; }
+  .post.bottom {
+    border-bottom: 0; }
