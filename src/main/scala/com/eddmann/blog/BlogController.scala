@@ -2,15 +2,15 @@ package com.eddmann.blog
 
 import org.scalatra._
 import scalate.ScalateSupport
-import org.fusesource.scalate.{ TemplateEngine, Binding }
+import org.fusesource.scalate.TemplateEngine
 import org.fusesource.scalate.layout.DefaultLayoutStrategy
-import javax.servlet.http.HttpServletRequest
-import collection.mutable
-import com.eddmann.blog.models._
+import com.eddmann.blog.models.{ Post => PostModel }
+import java.io._
 
 class BlogController extends ScalatraServlet with ScalateSupport {
 
-  override protected def defaultTemplatePath: List[String] = List("/WEB-INF/templates/views")
+  override protected def defaultTemplatePath: List[String] =
+    List("/WEB-INF/templates/views")
 
   override protected def createTemplateEngine(config: ConfigT) = {
     val engine = super.createTemplateEngine(config)
@@ -20,16 +20,26 @@ class BlogController extends ScalatraServlet with ScalateSupport {
     engine
   }
 
-  override protected def templateAttributes(implicit request: HttpServletRequest): mutable.Map[String, Any] = {
-    super.templateAttributes += "title" -> "edd mann."
-  }
-
   before() {
-    contentType="text/html"
+    contentType = "text/html"
   }
 
   get("/") {
-    ssp("index", "posts" -> PostModel.all)
+    cache {
+      ssp("index", "posts" -> PostModel.all("./posts"), "title" -> "edd mann")
+    }
+  }
+
+  get("/posts/:slug/") {
+    cache {
+      val post = PostModel.findBySlug("./posts", params("slug"))
+
+      post match {
+        case Some(post) =>
+          ssp("post", "post" -> post, "title" -> (post.meta("title") + " - edd mann"))
+        case None => halt(404)
+      }
+    }
   }
 
   notFound {
@@ -37,4 +47,22 @@ class BlogController extends ScalatraServlet with ScalateSupport {
     serveStaticResource() getOrElse resourceNotFound()
   }
 
+  private def cache(content: => String): String = {
+    def md5(s: String) = {
+      val instance = java.security.MessageDigest.getInstance("MD5")
+      instance.digest(s.getBytes).map("%02x".format(_)).mkString
+    }
+
+    val file = new File("./cache/" + md5(request.getRequestURI))
+
+    if (file.exists) {
+      scala.io.Source.fromFile(file).mkString + "\n<!-- cached -->"
+    } else {
+      val output = content
+      val writer = new PrintWriter(file)
+      writer.write(output)
+      writer.close
+      output + "\n<!-- processed -->"
+    }
+  }
 }

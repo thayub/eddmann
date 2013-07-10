@@ -6,6 +6,9 @@ import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
 object MyBlogBuild extends Build {
+
+  import com.earldouglas.xsbtwebplugin.PluginKeys._
+
   val Organization = "com.eddmann"
   val Name = "My Blog"
   val Version = "0.1.0-SNAPSHOT"
@@ -16,6 +19,7 @@ object MyBlogBuild extends Build {
     "my-blog",
     file("."),
     settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+      port in config("container") := 8081,
       organization := Organization,
       name := Name,
       version := Version,

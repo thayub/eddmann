@@ -1,13 +1,15 @@
-<%@ val posts: List[com.eddmann.blog.models.PostModel] %>
+<%@ val posts: List[com.eddmann.blog.models.Post] %>
 
 <h3 class="tagline"><span>I make stuff for the web</span> and occasionally ramble about it here.</h3>
 
 <%= unescape(posts.map(post => {
-    <div class="post">
-        <a href=""><h4>{ post.meta.getOrElse("title", "N/A") }</h4></a>
-        <p>{ post.meta.getOrElse("snippet", "N/A") }</p>
-        <div class="clr"></div>
-    </div>
+    val url = "/posts/" + post.meta.getOrElse("slug", "") + "/"
+
+    "<div class=\"post\">" +
+        "<a href=\"" + url + "\"><h4>" + post.meta.getOrElse("title", "N/A") + "</h4></a>" +
+        "<p>" + post.meta.getOrElse("snippet", "N/A") + "</p>" +
+        "<div class=\"clr\"></div>" +
+    "</div>"
 }).mkString) %>
 
 <div class="clr"></div>

@@ -1,0 +1,3 @@
+<%@ val post: com.eddmann.blog.models.Post %>
+<h2><%= post.meta.getOrElse("title", "N/A") %></h2>
+<%= post.content %>
