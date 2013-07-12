@@ -5,21 +5,17 @@ import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object MyBlogBuild extends Build {
-
-  import com.earldouglas.xsbtwebplugin.PluginKeys._
-
+object EddMannBuild extends Build {
   val Organization = "com.eddmann"
-  val Name = "My Blog"
+  val Name = "edd mann"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.2"
   val ScalatraVersion = "2.2.1"
 
   lazy val project = Project (
-    "my-blog",
+    "edd-mann",
     file("."),
     settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
-      port in config("container") := 8081,
       organization := Organization,
       name := Name,
       version := Version,

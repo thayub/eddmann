@@ -1,5 +1,4 @@
 <%@ val posts: List[List[com.eddmann.blog.model.Post]] %>
-<h3 class="tagline"><span>I make stuff for the web</span> and occasionally ramble about it here.</h3>
 <%= unescape(posts.map(line => {
     "<div class=\"container row\">" +
         line.map(post => {

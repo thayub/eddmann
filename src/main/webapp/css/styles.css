@@ -5,67 +5,55 @@ body {
   color: gray;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
-  line-height: 160%;
   background: #333; }
-
-.container {
-  width: 900px;
-  margin: auto;
-  padding: 10px 0; }
-
-.clr {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden; }
-
-a {
-  -webkit-transition: color 0.25s, background-color 0.25s;
-  -moz-transition: color 0.25s, background-color 0.25s;
-  -o-transition: color 0.25s, background-color 0.25s;
-  transition: color 0.25s, background-color 0.25s;
-  color: #29bdca;
-  text-decoration: none; }
-
-p {
-  margin-bottom: 20px; }
 
 /**
  * Typography.
  */
+a {
+  /*-webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  transition: color 0.25s;*/
+  text-decoration: none;
+  color: #404040; }
+  a:hover {
+    color: #29bdca; }
+
 h1, h2, h3, h4, h5, h6 {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   color: #404040;
-  line-height: 1.3em;
+  line-height: 1em;
   word-wrap: break-word; }
 
 h1 {
+  font-size: 35px;
   float: left;
-  padding-top: 30px;
-  color: #000;
-  line-height: 1em;
-  font-size: 35px; }
+  color: #000; }
   h1 span {
     font-size: 25px;
     color: #F00; }
+  h1 a {
+    color: #000; }
+    h1 a:hover {
+      color: #000; }
 
 h2 {
   font-size: 31px; }
 
 h3 {
   font-size: 25px; }
-
-h3.tagline {
-  text-align: center;
-  margin-bottom: 50px; }
-  h3.tagline span {
-    background: #00A2FF;
-    color: #FFF;
-    padding: 10px; }
+  h3.tagline {
+    text-align: center;
+    margin: 30px 0;
+    line-height: 2em; }
+    h3.tagline span {
+      background: #00A2FF;
+      color: #FFF;
+      padding: 10px; }
 
 h4 {
   font-size: 18px; }
@@ -80,104 +68,163 @@ h6 {
  * Header.
  */
 header {
-  background-color: #FFF;
-  height: 110px;
+  margin: 0;
+  padding: 40px 0 20px 0;
   width: 100%;
+  background-color: #FFF;
+  background-image: linear-gradient(top, white 75%, whitesmoke 100%);
+  background-image: -o-linear-gradient(top, white 75%, whitesmoke 100%);
+  background-image: -moz-linear-gradient(top, white 75%, whitesmoke 100%);
+  background-image: -webkit-linear-gradient(top, white 75%, whitesmoke 100%);
+  background-image: -ms-linear-gradient(top, white 75%, whitesmoke 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.75, white), color-stop(1, whitesmoke));
   -webkit-box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to bottom, white 75%, whitesmoke 100%); }
+  -moz-box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.2); }
 
-/**
- * Navigation.
- */
 nav {
-  float: right;
-  margin-top: 35px;
   font-size: 16px; }
-  nav ul li {
-    float: left;
-    margin-right: 25px;
-    text-transform: lowercase; }
-    nav ul li a {
-      color: #404040; }
-      nav ul li a:hover {
-        color: #29bdca; }
+  nav ul {
+    text-align: right;
+    margin: 15px 0 0 0;
+    padding: 0; }
+    nav ul li {
+      display: inline;
+      margin-left: 25px;
+      text-transform: lowercase;
+      list-style: none; }
+      nav ul li:first-child {
+        margin-left: 0; }
+      nav ul li a {
+        color: #404040;
+        text-decoration: none; }
+        nav ul li a:hover {
+          color: #29bdca; }
 
 /**
  * Content.
  */
 #content {
-  -webkit-box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 4px 2px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.2);
-  padding: 50px 0;
-  background: #FFF;
-  min-height: 400px; }
+  padding: 20px 0;
+  background: #FFF; }
+
+#content .post {
+  padding: 10px;
+  border-right: 1px dotted #CCC; }
+  #content .post h4, #content .post p {
+    line-height: 1.4em; }
+  #content .post p {
+    margin-top: 10px; }
+  #content .post:nth-child(3n) {
+    border-right: 0;
+    padding-right: 0; }
+
+article {
+  padding-top: 25px !important;
+  padding-bottom: 25px !important; }
+  article h2, article h3, article h4, article h5, article h6 {
+    line-height: 1.4em;
+    margin-bottom: 15px; }
+  article p {
+    margin-bottom: 30px;
+    line-height: 1.8em; }
+  article ul, article ol {
+    margin: 0 0 30px 40px;
+    line-height: 1.8em; }
+  article pre {
+    margin-bottom: 20px;
+    overflow: hidden; }
+  article figure {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center; }
+  article figcaption {
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #CCC;
+    display: block;
+    text-align: center;
+    font-style: italic; }
+  @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    article img {
+      max-width: 100%; }
+    article ul, article ol {
+      margin: 0 0 30px 20px; } }
 
 /**
  * Footer.
  */
+footer a {
+  color: #BFBFBF; }
+  footer a:hover {
+    color: #29bdca; }
 footer #latest-tweets {
   background: #444;
+  width: 100%;
   -webkit-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
-  /**
-   * Tweets.
-   */ }
-  footer #latest-tweets .container {
-    padding: 30px 0; }
-  footer #latest-tweets #me {
-    float: left;
-    margin-top: 15px; }
+  padding: 10px 0 10px 0;
+  min-height: 150px; }
   footer #latest-tweets #tweets {
-    margin-left: 20px;
-    float: left; }
+    min-height: 30px;
+    margin-bottom: 0 !important; }
     footer #latest-tweets #tweets .tweet {
+      margin-top: 10px;
+      margin-bottom: 10px;
       padding: 15px;
-      float: left;
       color: #999;
-      margin-left: 20px;
-      background: #333333 url(/img/tweet.png) no-repeat bottom left;
-      background-size: 66px; }
-      footer #latest-tweets #tweets .tweet a {
-        color: #BFBFBF; }
-        footer #latest-tweets #tweets .tweet a:hover {
-          color: #29bdca; }
-      footer #latest-tweets #tweets .tweet .message {
+      background: #333; }
+      footer #latest-tweets #tweets .tweet .msg {
         font-size: 13px;
-        width: 340px;
         min-height: 60px;
-        margin: 0; }
+        padding-bottom: 10px; }
       footer #latest-tweets #tweets .tweet .meta {
+        height: 20px;
+        background: url(/img/twitter.png) no-repeat top left;
         text-align: right;
         font-size: 11px;
-        margin: 0; }
+        line-height: 20px; }
 footer #details {
   font-size: 13px;
   background: #333;
   -webkit-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2); }
-  footer #details .container {
-    padding: 20px 0 40px 0; }
-  footer #details a {
-    color: #BFBFBF; }
+  box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+  text-align: center;
+  width: 100%; }
+  footer #details #details-wrapper {
+    display: inline-block;
+    margin: 0 auto; }
+  footer #details #me, footer #details #contact {
+    float: left; }
+  footer #details #contact {
+    list-style: none;
+    margin: 10px 0 0 20px; }
+    footer #details #contact li {
+      line-height: 1.7em; }
+      footer #details #contact li span {
+        display: inline-block;
+        width: 50px; }
 
 /**
- * Posts.
+ * Responsive.
  */
-.post {
-  height: 180px;
-  width: 255px;
-  padding: 20px;
-  border-right: 1px dotted #CCC;
-  border-bottom: 1px dotted #CCC;
-  float: left; }
-  .post h4 {
-    margin-bottom: 10px; }
-  .post:nth-child(3n+4) {
-    border-right: 0; }
-  .post.bottom {
-    border-bottom: 0; }
+@media (max-width: 767px) {
+  h1, nav ul {
+    text-align: center; }
+
+  h3.tagline {
+    display: none; }
+
+  #content .post {
+    border-right: 0;
+    margin: 0;
+    padding: 20px 10px;
+    border-bottom: 1px dotted #CCC; }
+    #content .post.last {
+      border-bottom: 0; } }
