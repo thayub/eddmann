@@ -26,7 +26,7 @@ class BlogController extends ScalatraServlet with ScalateSupport {
 
   get("/") {
     cache {
-      ssp("index", "posts" -> PostModel.latestSplitBy("./posts")(6)(3), "title" -> "edd mann")
+      ssp("index", "posts" -> PostModel.allSplitBy("./posts")(3), "title" -> "edd mann")
     }
   }
 
@@ -45,12 +45,6 @@ class BlogController extends ScalatraServlet with ScalateSupport {
   get("/about") {
     cache {
       ssp("about", "title" -> "about • edd mann")
-    }
-  }
-
-  get("/archive") {
-    cache {
-      ssp("archive", "posts" -> PostModel.allSplitBy("./posts")(3), "title" -> "archive • edd mann")
     }
   }
 

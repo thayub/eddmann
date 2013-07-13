@@ -34,9 +34,6 @@ object Post {
   def allSplitBy(directory: String)(split: Int) =
     all(directory).grouped(split).toList
 
-  def latestSplitBy(directory: String)(total: Int)(split: Int) =
-    all(directory).take(total).grouped(split).toList
-
   def findBySlug(directory: String, slug: String) =
     all(directory).find(_.meta("slug") == slug)
 

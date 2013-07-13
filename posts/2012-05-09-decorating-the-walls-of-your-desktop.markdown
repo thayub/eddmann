@@ -8,8 +8,10 @@ It all started wth the selection of dull wallpapers provided with Windows XP, wh
 In-time I soon realised that there was a whole world of wallpaper goodness out there (and with hormones kicking about) it soon moved onto the top 'babes' found on [skins.be](http://skins.be).
 Coupled with a patched UXTheme.dll and an over the top theme, its safe to say I didn't really take too much consideration into what was covering my computer walls.
 
-<p class="title centre"><span>We all remember this wallpaper, a blast from the past indeed</span></p>
-<a href="http://en.wikipedia.org/wiki/Bliss_(image)"><img style="margin-top:20px;" src="/posts/decorating-the-walls-of-your-desktop/bliss.jpg" class="centre shadow" /></a>
+<figure>
+    <figcaption>We all remember this wallpaper, a blast from the past indeed</figcaption>
+    <a href="http://en.wikipedia.org/wiki/Bliss_(image)"><img src="/assets/decorating-the-walls-of-your-desktop/bliss.jpg" /></a>
+</figure>
 
 Sadly years passed before it finally dawned on me, think of the hours we spend in front of are computer?, how many times a day are we greeted with the same pixels making up are wallpaper?, it all adds up after time.
 
@@ -42,12 +44,19 @@ It was not long after that, that both monitors were filled with a rotating selec
 
 With this small nostalgic tour over and out I leave you with some of the best cheat-sheets I have had the joy to paint my virtual walls with for the past year or so.
 
-<p class="title centre"><span>Vim Shortcut Wallpaper <em>by Michael Klein</em></span></p>
-<a href="https://github.com/LevelbossMike/vim_shortcut_wallpaper"><img style="margin-top:20px;" src="/posts/decorating-the-walls-of-your-desktop/vim-shortcuts.jpg" class="centre shadow" /></a>
-<p style="margin-top:25px;" class="title centre"><span>Git Visual Cheatsheet <em>by Stephanie Robesky</em></span></p>
-<a href="https://github.com/nerdgirl/git-cheatsheet-visual"><img style="margin-top:20px;" src="/posts/decorating-the-walls-of-your-desktop/git-cheatsheet.jpg" class="centre shadow" /></a>
-<p style="margin-top:25px;" class="title centre"><span>Periodic Table of Typefaces <em>by Cam Wilde</em></span></p>
-<a href="http://www.squidspot.com/Periodic_Table_of_Typefaces.html"><img style="margin-top:20px;" src="/posts/decorating-the-walls-of-your-desktop/periodic-table-of-typefaces.jpg" class="centre shadow" /></a>
-<br /><br />
+<figure>
+    <figcaption>Vim Shortcut Wallpaper <em>by Michael Klein</em></figcaption>
+    <a href="https://github.com/LevelbossMike/vim_shortcut_wallpaper"><img src="/assets/decorating-the-walls-of-your-desktop/vim-shortcuts.jpg" /></a>
+</figure>
+
+<figure>
+    <figcaption>Git Visual Cheatsheet <em>by Stephanie Robesky</em></figcaption>
+    <a href="https://github.com/nerdgirl/git-cheatsheet-visual"><img src="/assets/decorating-the-walls-of-your-desktop/git-cheatsheet.jpg" /></a>
+</figure>
+
+<figure>
+    <figcaption>Periodic Table of Typefaces <em>by Cam Wilde</em></figcaption>
+    <a href="http://www.squidspot.com/Periodic_Table_of_Typefaces.html"><img src="/assets/decorating-the-walls-of-your-desktop/periodic-table-of-typefaces.jpg" /></a>
+</figure>
 
 No longer should your desktop be plagued with an oversized windows logo or a black hole, turn your sights to a cheat-sheet and get some learning done!
