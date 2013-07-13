@@ -46,7 +46,7 @@
         </section>
         <section id="details">
             <div id="details-wrapper">
-                <img src="/img/me.png" id="me" alt="Me...">
+                <img src="/img/me.png" id="me" alt="Me..." title="Me...">
                 <ul id="contact">
                     <li><span>twitter</span> <a href="http://twitter.com/edd_mann">@edd_mann</a></li>
                     <li><span>github</span> <a href="http://github.com/eddmann">eddmann</a></li>
