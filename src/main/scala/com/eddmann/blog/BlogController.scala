@@ -9,6 +9,14 @@ import com.eddmann.blog.model.{ Post => PostModel }
 
 class BlogController extends ScalatraServlet with ScalateSupport {
 
+  private val postsDirectory = "./posts"
+
+  // private val postsDirectory = "/opt/jetty/webapps/root/posts"
+
+  private val cacheDirectory = "./cache"
+
+  // private val cacheDirectory = "/opt/jetty/webapps/root/cache"
+
   override protected def defaultTemplatePath: List[String] =
     List("/WEB-INF/templates/views")
 
@@ -26,13 +34,13 @@ class BlogController extends ScalatraServlet with ScalateSupport {
 
   get("/") {
     cache {
-      ssp("index", "posts" -> PostModel.allSplitBy("./posts")(3), "title" -> "edd mann • software developer")
+      ssp("index", "posts" -> PostModel.allSplitBy(postsDirectory)(3), "title" -> "edd mann • software developer")
     }
   }
 
   get("/posts/:slug/?") {
     cache {
-      val post = PostModel.findBySlug("./posts", params("slug"))
+      val post = PostModel.findBySlug(postsDirectory, params("slug"))
 
       post match {
         case Some(post) =>
@@ -54,13 +62,12 @@ class BlogController extends ScalatraServlet with ScalateSupport {
   }
 
   private def cache(content: => String): String = {
-    return content
     def md5(s: String) = {
       val instance = java.security.MessageDigest.getInstance("MD5")
       instance.digest(s.getBytes).map("%02x".format(_)).mkString
     }
 
-    val file = new File("./cache/" + md5(request.getRequestURI))
+    val file = new File(cacheDirectory + "/" + md5(request.getRequestURI))
 
     if (file.exists) {
       scala.io.Source.fromFile(file).mkString

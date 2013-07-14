@@ -5,5 +5,7 @@ import javax.servlet.ServletContext
 class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext) {
     context.mount(new BlogController, "/*")
+
+    context.initParameters("org.scalatra.environment") = "production"
   }
 }
