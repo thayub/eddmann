@@ -1,5 +1,6 @@
 .sass-cache
 .settings
+.vagrant
 .project
 .classpath
 target
