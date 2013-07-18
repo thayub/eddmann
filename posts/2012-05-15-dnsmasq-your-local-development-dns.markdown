@@ -1,6 +1,7 @@
 ---
 title: DNSMasq, your local development DNS
 slug: dnsmasq-your-local-development-dns
+abstract: Local development can be a pain, checkout DNSMasq.
 ---
 
 Setting up a single-user web development environment is easy.
@@ -30,7 +31,7 @@ To resolve this issue use the following commands; first checking which process i
     $ sudo netstat -anlp | grep -w LISTEN
     $ sudo kill [process-id]
 
-The last step is to add all your local development domains to the host file found at <span class="snippet">/etc/hosts</span>.
+The last step is to add all your local development domains to the host file found at '/etc/hosts'.
 Once all domains have been fully imported the final command that needs to be run is to restart DNSMasq.
 
     $ sudo /etc/init.d/dnsmasq restart
@@ -44,18 +45,18 @@ Setting up DNSMasq on an applicable DD-WRT installation is as simple as adding t
 
 <figure>
     <figcaption>Below is an screenshot of an example DD-WRT DNSMasq configuration</figcaption>
-    <img src="/assets/dnsmasq-your-local-development-dns/dd-wrt.png" alt="DD-WRT" />
+    <img class="shadow" src="/assets/dnsmasq-your-local-development-dns/dd-wrt.png" alt="DD-WRT" />
 </figure>
 
 ### An even more awesome idea
 
 Instead of having to add an extra entry for each development site, which can be a chore, we have the chance to make it even easier.
-My regular naming convention for local development sites is to use the descriptive <span class="snippet">.dev</span> TLD.
+My regular naming convention for local development sites is to use the descriptive '.dev' TLD.
 This naming scheme allows me to easily distinguish between development and live builds.
-Lucky for us we have the chance to exploit the fact that <span class="snippet">.dev</span> is an unused TLD.
+Lucky for us we have the chance to exploit the fact that '.dev' is an unused TLD.
 With DNSMasq we are able to easily setup a TLD wildcard which will check/match any TLD we pass through the DNS and forward it to are defined location.
-As a consequence any URL request sent with a <span class="snippet">.dev</span> TLD can be directed to my local development server for Apache to happily respond to.
-For setup on a software installation you are required to add the following line into your <span class="snippet">dnsconfig.conf</span>.
+As a consequence any URL request sent with a '.dev' TLD can be directed to my local development server for Apache to happily respond to.
+For setup on a software installation you are required to add the following line into your 'dnsconfig.conf'.
 
     $ sudo "address=/dev/[dev-sever-ip]" >> /etc/dnsmasq.etc
 

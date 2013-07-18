@@ -1,12 +1,13 @@
 ---
 title: An alternative to 'var_dump' in PHP
 slug: an-alternative-to-var-dump-in-php
+abstract: Used all the time, so lets make it better.
 ---
 
-Whilst working with PHP, I seem to use <span class="snippet">var_dump</span> a ridiculous amount, its a debugging must-have.
+Whilst working with PHP, I seem to use 'var\_dump' a ridiculous amount, its a debugging must-have.
 However, it does fall short in a few ways, especially in how it doesn't take into consideration that the function is almost always displayed in a HTML page - switching to the page's source can become a pain.
 Due to the pitfalls a host of projects such as [Krumo](http://krumo.sourceforge.net/) and [Kint](https://code.google.com/p/kint/) have cropped up to cater for these needs.
-As well as these projects, if you have [XDebug](http://xdebug.org/) installed it will replace the default <span class="snippet">var_dump</span> function with its own implementation that outputs the information with well-needed styling.
+As well as these projects, if you have [XDebug](http://xdebug.org/) installed it will replace the default 'var\_dump' function with its own implementation that outputs the information with well-needed styling.
 For me though, I don't need all bells n' whistles that these provide, my base requirements are:
 
 * Better presentation on a HTML page, no viewing of source necessarily

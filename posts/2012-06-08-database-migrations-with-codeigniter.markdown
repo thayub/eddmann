@@ -1,6 +1,7 @@
 ---
 title: Database Migrations with CodeIgniter
 slug: database-migrations-with-codeigniter
+abstract: You version control your source-code, why not your database?
 ---
 
 I first became aware of database migrations a few years ago when I was exploring the world of [Rails](http://rubyonrails.org/).
@@ -22,7 +23,7 @@ This change coincided with the interest in migrations very well, as I was pleasa
 It should be noted that there are many different migration tools available in most langauges conjured up.
 Due to this please be warned of becoming vendor locked and spend sometime in making your decision.
 
-Below is a sample migration that should be created inside <span class="snippet">./application/migrations/</span> with the filename <span class="snippet">001-create-users.php</span>.
+Below is a sample migration that should be created inside './application/migrations/' with the filename '001-create-users.php'.
 Migration files in CodeIgniter follow the conversion of putting the version number and then a description (commonly the class name).
 
     class Migration_Create_Users extends CI_Migration {
@@ -49,7 +50,7 @@ Migration files in CodeIgniter follow the conversion of putting the version numb
 
 The code snippet above when created, adds a table (in MySQL) with an auto incrementing primary key called 'id' and 'username'/'password' columns.
 If this migration is 'teared down' however the the 'user' table is dropped from the schema.
-To run this migration you must first make sure that they are enabled and desired version set in your application's configruation file (found at <span class="snippet">./application/config/migration.php</span>).
+To run this migration you must first make sure that they are enabled and desired version set in your application's configruation file (found at './application/config/migration.php').
 Once configured you can create a simple controller, like the one displayed below, which when visited calls the migration library.
 
     class Migrate extends CI_Controller {
@@ -65,7 +66,7 @@ Once configured you can create a simple controller, like the one displayed below
 
     }
 
-Adding a second schema (called <span class="snippet">002_add_name_fields.php</span>) to the application you can see how the database can be procedurally altered.
+Adding a second schema (called '002-add-name-fields.php') to the application you can see how the database can be procedurally altered.
 
     class Migration_Add_Name_Fields extends CI_Migration {
 

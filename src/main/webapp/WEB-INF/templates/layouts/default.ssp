@@ -30,9 +30,9 @@
             <nav class="col span_12">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="http://github.com/eddmann">GitHub</a></li>
-                    <li><a href="/">CV</a></li>
+                    <li><a href="http://twitter.com/edd_mann" target="_blank">Twitter</a></li>
+                    <li><a href="http://github.com/eddmann" target="_blank">GitHub</a></li>
+                    <li><a href="/EdwardMannProgrammerCV.pdf">CV</a></li>
                 </ul>
             </nav>
         </div>
@@ -48,13 +48,19 @@
             <div id="details-wrapper">
                 <img src="/img/me.png" id="me" alt="Me..." title="Me...">
                 <ul id="contact">
-                    <li><span>twitter</span> <a href="http://twitter.com/edd_mann">@edd_mann</a></li>
-                    <li><span>github</span> <a href="http://github.com/eddmann">eddmann</a></li>
+                    <li><span>twitter</span> <a href="http://twitter.com/edd_mann" target="_blank">@edd_mann</a></li>
+                    <li><span>github</span> <a href="http://github.com/eddmann" target="_blank">eddmann</a></li>
                     <li><span>email</span> <a href="mailto:the@eddmann.com">the@eddmann.com</a></li>
                 </ul>
             </div>
         </section>
     </footer>
+    <script>
+        var _gaq=[['_setAccount','UA-32512081-1'],['_setDomainName','eddmann.com'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
     <script src="/js/scripts.min.js"></script>
 </body>
 </html>

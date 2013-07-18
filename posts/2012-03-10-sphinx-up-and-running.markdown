@@ -1,6 +1,7 @@
 ---
 title: Sphinx, up and running
 slug: sphinx-up-and-running
+abstract: Advanced full-text indexing, super quick.
 ---
 
 Sphinx (*SQL Phrase Index*) is an open-source, full-text search engine, indepedent of any one data store implmentation.

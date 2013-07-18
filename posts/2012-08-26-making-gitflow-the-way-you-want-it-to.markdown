@@ -1,13 +1,14 @@
 ---
 title: Making Gitflow the way you want it to
 slug: making-gitflow-the-way-you-want-it-to
+abstract: Using Git in a way that just makes complete sense.
 ---
 
 I have been a part-time Git user for alittle over a year now, before this I had dabbled with using [Subversion](http://subversion.apache.org/) but never for anything too serious.
 I say part-time as throughout the year I never fully got to grips with all the ideologies/tools provided to aid in my development lifecyle process - in particular branching.
 
 Sure, I had attempted to get my head around the great documentation found on the offical [Git website](http://git-scm.com/), along with a boat load of screencasts, but putting this into practise just never happened.
-Up until recently I had been very happy working in 'master' and maybe if i'm feeling alittle crazy adding a temporary branch for a feature I may be experimenting on.
+Up until recently I had been very happy working in 'master' and maybe if I'm feeling alittle crazy adding a temporary branch for a feature I may be experimenting on.
 
 ### Gitflow to the rescue
 

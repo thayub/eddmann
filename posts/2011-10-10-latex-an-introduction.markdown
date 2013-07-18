@@ -1,6 +1,7 @@
 ---
 title: LaTeX, an introduction
 slug: latex-an-introduction
+abstract: LaTeX can be alittle bewildering when you first dive in, this post should help ease this.
 ---
 
 LaTeX (pronounced *lay-tech*) is a document preparation system providing high quality typesetting, using the [WYSIWYM](http://en.wikipedia.org/wiki/WYSIWYM) ideology.
@@ -29,7 +30,7 @@ Users on the Windows platform can head to [proTeXt](http://www.tug.org/protext/)
 
 <figure>
     <figcaption>A screenshot of TeXShop in action</figcaption>
-    <img src="/assets/latex-an-introduction/tex-shop.png" />
+    <img alt="TeXShop" src="/assets/latex-an-introduction/tex-shop.png" />
 </figure>
 
 ### Basics
@@ -83,8 +84,8 @@ The package that we are importing allows us, as the name suggests, to import and
 As well as displaying the graphic, I highlighted before that we have also defined the desired width that the image should be.
 Many metrics can be used (*mm*, *cm*, *pt*) to define the size whilst also maintaining the images aspect ratio.
 The formatted table that is displayed shows two columns with three rows.
-The column widths are set during the declaration of the table and <span class="snippet">\\</span> is used to signify that a rows contents has ended.
-Other notable syntax that is being used is the call of <span class="snippet">\textbf</span> to make the column titles bold, <span class="snippet">&amp;</span> used to split the row contents into columns and <span class="snippet">\hline</span> to tell LaTeX to print a horizontal line.
+The column widths are set during the declaration of the table and '\\' is used to signify that a rows contents has ended.
+Other notable syntax that is being used is the call of '\textbf' to make the column titles bold, '&amp;' used to split the row contents into columns and '\hline' to tell LaTeX to print a horizontal line.
 
 ### Wrap Up
 

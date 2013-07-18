@@ -1,13 +1,14 @@
 ---
 title: Accessing PHP documentation using 'pman'
 slug: accessing-php-documentation-using-pman
+abstract: Super quick access to the PHP documentation.
 ---
 
 PHP has a ridiculous amout of in-built functions, even though I code in it daily I still get the surprise of finding a new one.
-It wasn't until recently that I touched upon <span class="snippet">strip_tags</span>, saving me ample's amount of time having to write my own implementation.
+It wasn't until recently that I touched upon 'strip_tags', saving me ample's amount of time having to write my own implementation.
 My philosophy now is that if theres a function need you require, PHP most likely already has it.
 In spite of this wealth of function goodness however, I hate having to load up a browser and visit [php.net](http://php.net/) to read the documentation (no matter how good it is).
-I spend way too much time in the terminal now, and love the UNIX ethos of being able to run <span class="snippet">man 'command'</span> and quickly display documentation on a specific command.
+I spend way too much time in the terminal now, and love the UNIX ethos of being able to run 'man command' and quickly display documentation on a specific command.
 What I want is the same capability but in regard to PHP functions - thankfully this need has been fulfilled in the form of 'pman'.
 
 ### Installation
@@ -16,7 +17,7 @@ Installing 'pman' is incredibly easy using PEAR, all you have to do is run the c
 
     $ pear install doc.php.net/pman
 
-Once the installation has successfully completed you can now access manual pages for PHP functions by calling <span class="snippet">pman</span> followed by the function name, for example:
+Once the installation has successfully completed you can now access manual pages for PHP functions by calling 'pman' followed by the function name, for example:
 
     $ pman strip_tags
 

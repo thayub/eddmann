@@ -1,6 +1,7 @@
 ---
 title: IE6, IE7 & IE8, meet VMWare Fusion
 slug: ie6-ie7-ie8-meet-vmware-fusion
+abstract: Trying to ease the pains of IE compatibility on the Mac.
 ---
 
 Unfortunately as a web developer you will undoubtedly encounter the need to support one (or more) of the three browsers mentioned in this article title.
@@ -26,7 +27,7 @@ You will now have two files of which to work with:
 * Windows XP.vmc
 
 We only care about the VHD, as the next step is to convert that image into a Virtual Machine Disk (VMDK) to support VMWare Fusion.
-The easiest way I have researched into performing this task is to install [Q](http://www.kju-app.org/) which internally includes a component called <span class="snippet">qemu-img</span> which works well.
+The easiest way I have researched into performing this task is to install [Q](http://www.kju-app.org/) which internally includes a component called 'qemu-img' which works well.
 
 Once you have installed Q, open up your Terminal and navigate to the folder which holds the VHD, once in there run the command below:
 
@@ -40,7 +41,7 @@ Once you are at the desktop you can now install the VMware tools, which will pro
 
 <figure>
     <figcaption>Installing IE7 on the newly created Virtual Machine</figcaption>
-    <img src="/assets/ie6-ie7-ie8-meet-vmware-fusion/ie7.png" />
+    <img alt="IE7 Virtual Machine" src="/assets/ie6-ie7-ie8-meet-vmware-fusion/ie7.png" />
 </figure>
 
 You can now happily leave it here, and just create multiple copies of the VM to install the different versions of IE you wish to compatibility test to.
@@ -50,7 +51,7 @@ This method saves on disk space, and allows you to quickly switch between stable
 
 <figure>
     <figcaption>A tree view of all the snapshots that I created for testing use</figcaption>
-    <img src="/assets/ie6-ie7-ie8-meet-vmware-fusion/snapshots.png" />
+    <img alt="Virtual Machine Snapshots" src="/assets/ie6-ie7-ie8-meet-vmware-fusion/snapshots.png" />
 </figure>
 
 As you can see from the screenshot above I am currently using the IE6 snapshot with the ability to quickly switch to another browsers configuration in a couple of clicks.

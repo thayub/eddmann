@@ -11,10 +11,6 @@ body {
  * Typography.
  */
 a {
-  /*-webkit-transition: color 0.25s;
-  -moz-transition: color 0.25s;
-  -o-transition: color 0.25s;
-  transition: color 0.25s;*/
   text-decoration: none;
   color: #404040; }
   a:hover {
@@ -131,6 +127,8 @@ article {
   article p {
     margin-bottom: 30px;
     line-height: 1.8em; }
+  article pre + h3 {
+    margin-top: 35px; }
   article ul, article ol {
     margin: 0 0 30px 40px;
     line-height: 1.8em; }
@@ -141,9 +139,13 @@ article {
     display: block;
     margin-bottom: 20px;
     text-align: center; }
+    article figure img.shadow {
+      -moz-box-shadow: 0 0 10px #888;
+      -webkit-box-shadow: 0 0 10px #888;
+      box-shadow: 0 0 10px #888; }
   article figcaption {
     padding: 10px 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-bottom: 1px dotted #CCC;
     display: block;
     text-align: center;

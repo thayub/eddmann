@@ -1,6 +1,7 @@
 ---
 title: Decorating the walls of your desktop
 slug: decorating-the-walls-of-your-desktop
+abstract: It turns out you can learn alot from a wallpaper.
 ---
 
 I have gone through many desktop wallpaper phases in my time, whatta' strange topic to even discuss.
@@ -10,7 +11,7 @@ Coupled with a patched UXTheme.dll and an over the top theme, its safe to say I 
 
 <figure>
     <figcaption>We all remember this wallpaper, a blast from the past indeed</figcaption>
-    <a href="http://en.wikipedia.org/wiki/Bliss_(image)"><img src="/assets/decorating-the-walls-of-your-desktop/bliss.jpg" /></a>
+    <a href="http://en.wikipedia.org/wiki/Bliss_(image)"><img class="shadow" src="/assets/decorating-the-walls-of-your-desktop/bliss.jpg" alt="Bliss Wallpaper" /></a>
 </figure>
 
 Sadly years passed before it finally dawned on me, think of the hours we spend in front of are computer?, how many times a day are we greeted with the same pixels making up are wallpaper?, it all adds up after time.
@@ -46,17 +47,17 @@ With this small nostalgic tour over and out I leave you with some of the best ch
 
 <figure>
     <figcaption>Vim Shortcut Wallpaper <em>by Michael Klein</em></figcaption>
-    <a href="https://github.com/LevelbossMike/vim_shortcut_wallpaper"><img src="/assets/decorating-the-walls-of-your-desktop/vim-shortcuts.jpg" /></a>
+    <a href="https://github.com/LevelbossMike/vim_shortcut_wallpaper"><img class="shadow" alt="Vim Wallpaper" src="/assets/decorating-the-walls-of-your-desktop/vim-shortcuts.jpg" /></a>
 </figure>
 
 <figure>
     <figcaption>Git Visual Cheatsheet <em>by Stephanie Robesky</em></figcaption>
-    <a href="https://github.com/nerdgirl/git-cheatsheet-visual"><img src="/assets/decorating-the-walls-of-your-desktop/git-cheatsheet.jpg" /></a>
+    <a href="https://github.com/nerdgirl/git-cheatsheet-visual"><img class="shadow" alt="Git Cheatsheet" src="/assets/decorating-the-walls-of-your-desktop/git-cheatsheet.jpg" /></a>
 </figure>
 
 <figure>
     <figcaption>Periodic Table of Typefaces <em>by Cam Wilde</em></figcaption>
-    <a href="http://www.squidspot.com/Periodic_Table_of_Typefaces.html"><img src="/assets/decorating-the-walls-of-your-desktop/periodic-table-of-typefaces.jpg" /></a>
+    <a href="http://www.squidspot.com/Periodic_Table_of_Typefaces.html"><img class="shadow" alt="Typefaces" src="/assets/decorating-the-walls-of-your-desktop/periodic-table-of-typefaces.jpg" /></a>
 </figure>
 
 No longer should your desktop be plagued with an oversized windows logo or a black hole, turn your sights to a cheat-sheet and get some learning done!

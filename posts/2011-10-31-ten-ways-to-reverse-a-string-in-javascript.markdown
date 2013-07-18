@@ -1,10 +1,11 @@
 ---
 title: Ten ways to reverse a string in JavaScript
 slug: ten-ways-to-reverse-a-string-in-javascript
+abstract: Multiple ways of completing one of the most popular interview questions.
 ---
 
 In a recent job interview I was asked to write a simple C# function that would reverse a string and return the result.
-However, there was a catch, I was unable to use the provided string objects <span class="snippet">reverse()</span> function.
+However, there was a catch, I was unable to use the provided string objects 'reverse()' function.
 I successfully created a function that did as requested (using a decrementing for-loop and concatenation), though I realised that using concatenation would result in a new string being created in memory upon each iteration - as strings are immutable objects.
 I solved this by using a StringBuilder to append each character to and returning the result.
 On the way home I began to think of the endless ways in which you could reverse a string in code (extremely sad I know).
@@ -50,8 +51,8 @@ Finally the created array is joined into a single string and returned.
 
 The above example is a modification of the second example.
 Instead of using two counters however we use one incrementing value that gets deducted from the total length of the parsed in string.
-This calculated value determines the position of the next character to be pushed to the new array (using the <span class="snippet">push()</span> function instead of <span class="snippet">[]</span>).
-The other difference from the last example is that is uses the strings <span class="snippet">charAt()</span> method instead of its array capabilities.
+This calculated value determines the position of the next character to be pushed to the new array (using the 'push()' function instead of '[]').
+The other difference from the last example is that is uses the strings 'charAt()' method instead of its array capabilities.
 
 <figcaption>4. In-built functions</figcaption>
 
@@ -59,8 +60,8 @@ The other difference from the last example is that is uses the strings <span cla
       return s.split('').reverse().join('');
     }
 
-This implementation takes advantage of the <span class="snippet">reverse()</span> method provided by the Array prototype.
-First it splits the string into a real array, then calls the <span class="snippet">reverse()</span> method and finally returns the joined array.
+This implementation takes advantage of the 'reverse()' method provided by the Array prototype.
+First it splits the string into a real array, then calls the 'reverse()' method and finally returns the joined array.
 
 <figcaption>5. Decrementing while-loop with concatenation and substring</figcaption>
 
@@ -76,7 +77,7 @@ First it splits the string into a real array, then calls the <span class="snippe
 
 Using a decrementing while-loop I was able to implement this method.
 Again, harnessing concatenation, I was able to achieve the iteration through the string in a similar fashion to the for-loop used in the first two examples.
-I was then able to use the strings <span class="snippet">substring()</span> function to retrieve each desired character.
+I was then able to use the strings 'substring()' function to retrieve each desired character.
 
 <figcaption>6. Only for-loop declaration with concatenation</figcaption>
 
@@ -153,7 +154,7 @@ In the test suite each function was called multiple times (with time measured an
 
 <figure>
     <figcaption>A graph showing the performance of the ten implementations in four browsers</figcaption>
-    <img src="/assets/ten-ways-to-reverse-a-string-in-javascript/browser-performance.png" />
+    <img alt="Browser Performance" src="/assets/ten-ways-to-reverse-a-string-in-javascript/browser-performance.png" />
 </figure>
 
 Above is a screenshot (without the key) of one of the graphs that JSPref provided for the result set that was generated.

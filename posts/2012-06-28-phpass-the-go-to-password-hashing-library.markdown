@@ -1,6 +1,7 @@
 ---
 title: PHPass, the go-to password hashing library
 slug: phpass-the-go-to-password-hashing-library
+abstract: Password security is a highly discussed/misunderstood topic.
 ---
 
 It is becoming a scarily common occurence to read about [yet](http://www.guardian.co.uk/technology/us-news-blog/2012/jun/07/blogpost-eharmony-linkedin-hacked-leaked) [another](http://www.bbc.co.uk/news/technology-18338956) [batch](http://www.pcworld.com/article/257178/music_site_lastfm_joins_the_passwordleak_parade.html) of high-profile websites user's passwords being leaked online - for everyone's cracking pleasure.
@@ -20,7 +21,7 @@ I say deter as nothing is unbreakable, and your main aim as the developer is to 
 PHPass gives you the lethal combination of salting, key stretching and Bcrypt.
 Salting is a relatively common method used in making the process of cracking your stored hashes harder.
 Salts are most commonly unqiue (technically called a [nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce)), or though they can be global, that are appendend/prepended to the given value making the produced output unqiue no matter what the input.
-Randomess for thease salts is generated from multiple factors, depending on the host system, for example on a unix system <span class="snippet">/dev/urandom</span> can be used.
+Randomness for these salts is generated from multiple factors, depending on the host system, for example on a UNIX system '/dev/urandom' can be used.
 
 Salting prevents a few of the most widely exploited weaknesses in todays hashing functions.
 Thease threats include the ability to use a pre-hased list (such as a rainbow table) on the subject, as well as the ability to reuse a cracked hash's password on another record with the same hash sequence.
@@ -66,7 +67,7 @@ Its even easier to compare hashes, using the following code snippet.
     if ($phpass->CheckPassword($password, $hash))
       echo 'We have found a match!';
 
-I am an avid CodeIgniter user at present, and was happy to discover that a quick search on GitHub returned a very cool PHPass wrapper library (love the use of the <span class="snippet">_call</span> function).
+I am an avid CodeIgniter user at present, and was happy to discover that a quick search on GitHub returned a very cool PHPass wrapper library (love the use of the '\_call' function).
 The library can be found [here](https://github.com/segersjens/CodeIgniter-Phpass-Library).
 
 The one and only point I hope you take away from this article is that if you are using PHP, use PHPass as your password hashing library!

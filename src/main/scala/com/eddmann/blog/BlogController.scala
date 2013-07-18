@@ -50,12 +50,6 @@ class BlogController extends ScalatraServlet with ScalateSupport {
     }
   }
 
-  get("/about/?") {
-    cache {
-      ssp("about", "title" -> "about • edd mann")
-    }
-  }
-
   notFound {
     contentType = null
     serveStaticResource() getOrElse resourceNotFound()
