@@ -40,9 +40,9 @@ function tmpl($file, $tmpl = [])
     ob_start();
 
     extract($tmpl);
-    
+
     eval('?>' . file_get_contents(TMPL_DIR . $file . TMPL_EXT));
-    
+
     return ob_get_clean();
 }
 
@@ -63,6 +63,8 @@ function post($file)
         return false;
     }
 
+    $meta['url'] = POST_DIR . $meta['slug'];
+
     return [
         'meta' => $meta,
         'post' => trim($postMatch[1])
@@ -70,7 +72,7 @@ function post($file)
 }
 
 function posts() {
-    foreach (glob(POST_DIR . '*') as $file) {
+    foreach (array_reverse(glob(POST_DIR . '*')) as $file) {
         if ($post = post($file)) {
             yield $post;
         }
