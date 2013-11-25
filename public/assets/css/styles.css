@@ -127,6 +127,10 @@ article {
   article p {
     margin-bottom: 30px;
     line-height: 1.8em; }
+  article time {
+    display: block;
+    margin: 20px 0;
+    color: #AAA; }
   article pre + h3 {
     margin-top: 35px; }
   article ul, article ol {
