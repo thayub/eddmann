@@ -24,7 +24,7 @@
 <body>
     <header>
         <div class="container row">
-            <h1 class="col span_12"><a href="/">edd <span>✪</span> mann</a></h1>
+            <h1 class="col span_12"><a href="/">edd <span>&#10026;</span> mann</a></h1>
             <nav class="col span_12">
                 <ul>
                     <li><a href="/">Home</a></li>
