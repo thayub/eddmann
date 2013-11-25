@@ -1,0 +1,9 @@
+{
+    "require": {
+        "dflydev/markdown": "1.0.*"
+    },
+    "config": {
+        "preferred-install": "stable"
+    },
+    "minimum-stability": "stable"
+}
