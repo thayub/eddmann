@@ -38,6 +38,7 @@
     <section id="content">
         <article class="container">
             <h2><?php echo $tmpl['meta']['title']; ?></h2>
+            <time>Published: <?php echo $tmpl['meta']['date']; ?><?php echo (isset($tmpl['meta']['revised'])) ? ', Revised: ' . $tmpl['meta']['revised'] : ''; ?></time>
             <?php echo $tmpl['post']; ?>
         </article>
     </section>
