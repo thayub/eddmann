@@ -1,4 +1,6 @@
 .DS_Store
 .vagrant
+/.sass-cache/
 /vendor/
 composer.lock
+Gemfile.lock
