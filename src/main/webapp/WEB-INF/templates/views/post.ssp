@@ -1,5 +1,0 @@
-<%@ val post: com.eddmann.blog.model.Post %>
-<article class="container">
-    <h2><%= post.meta("title") %></h2>
-    <%= post.content %>
-</article>
