@@ -63,7 +63,7 @@ function post($file)
         return false;
     }
 
-    $meta['url'] = POST_DIR . $meta['slug'];
+    $meta['url'] = '/' . POST_URL . $meta['slug'] . '/';
 
     return [
         'meta' => $meta,
@@ -81,11 +81,12 @@ function posts() {
 
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
-$output = cache($request, function() use ($request)
+$output = cache($request, function() use ($request, $markdown)
 {
     if ($request) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
+                $post['post'] = $markdown->transformMarkdown($post['post']);
                 return tmpl('post', $post);
             }
         }
