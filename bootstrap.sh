@@ -41,7 +41,7 @@ gpgcheck=0
 enabled=1" > /etc/yum.repos.d/nginx.repo
 yum install -y nginx
 rm /etc/nginx/conf.d/default.conf
-ln -fs /vagrant/conf/nginx.conf /etc/nginx/conf.d/nginx.conf # use provided
+ln -fs /vagrant/conf/local.conf /etc/nginx/conf.d/local.conf # use provided
 chkconfig --levels 235 nginx on
 /etc/init.d/nginx start
 
