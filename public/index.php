@@ -71,7 +71,8 @@ function post($file)
     ];
 }
 
-function posts() {
+function posts()
+{
     foreach (array_reverse(glob(POST_DIR . '*')) as $file) {
         if ($post = post($file)) {
             yield $post;
