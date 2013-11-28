@@ -12,8 +12,6 @@ define('POST_URL',  'posts/');
 
 require('../vendor/autoload.php');
 
-$markdown = new MarkdownParser();
-
 function cache($key, $content)
 {
     if ( ! USE_CACHE) return $content();
@@ -82,12 +80,12 @@ function posts()
 
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
-$output = cache($request, function() use ($request, $markdown)
+$output = cache($request, function() use ($request)
 {
     if ($request) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
-                $post['post'] = $markdown->transformMarkdown($post['post']);
+                $post['post'] = (new MarkdownParser())->transformMarkdown($post['post']);
                 return tmpl('post', $post);
             }
         }
