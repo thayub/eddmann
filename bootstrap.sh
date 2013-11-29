@@ -34,13 +34,9 @@ sed -i "s/^\user.*$/user = nginx/g" /etc/php-fpm.d/www.conf
 sed -i "s/^\group.*$/group = nginx/g" /etc/php-fpm.d/www.conf
 
 # nginx
-echo "[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/6/x86_64/
-gpgcheck=0
-enabled=1" > /etc/yum.repos.d/nginx.repo
+rpm -Uvh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
 yum install -y nginx
-rm /etc/nginx/conf.d/default.conf
+rm /etc/nginx/conf.d/*.conf
 ln -fs /vagrant/conf/local.conf /etc/nginx/conf.d/local.conf # use provided
 chkconfig --levels 235 nginx on
 
