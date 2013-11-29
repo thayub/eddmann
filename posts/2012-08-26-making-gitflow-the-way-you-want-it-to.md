@@ -25,12 +25,16 @@ He discussed incorporating the use of the branch types listed below:
 On-top of this he released a set of [Git extensions](http://github.com/nvie/gitflow), to help speed up and ease the learning curb.
 If you are a Homebrew user like myself, installing Gitflow is as easy as running:
 
-    $ brew install git-flow
+~~~ .bash
+$ brew install git-flow
+~~~
 
 And then to begin using Gitflow on an existing Git repository, followed by creating a new feature called 'test':
 
-    $ git flow init
-    $ git flow feature start test
+~~~ .bash
+$ git flow init
+$ git flow feature start test
+~~~
 
 Now there is no point in me repeating the concepts put forth in Vincent's well laid out blog post, or adding yet another simple tutorial to the mix.
 Instead however, I will leave you with a list of resouces that I have found useful when learning this subject:

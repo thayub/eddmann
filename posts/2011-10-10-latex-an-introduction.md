@@ -40,17 +40,21 @@ Users on the Windows platform can head to [proTeXt](http://www.tug.org/protext/)
 Creating a simple LaTeX document could not be any simpler.
 Similar to how you have to structure a HTML document, a basic LaTeX structure is required.
 
-    \documentclass{article}
-    \begin{document}
-    Hello LaTeX!
-    \end{document}
+~~~ .tex
+\documentclass{article}
+\begin{document}
+Hello LaTeX!
+\end{document}
+~~~
 
 In a few lines we are able to create a document which can be easily processed using LaTeX into a variety of formats.
 The first line is used to tell LaTeX how to format the document (heading, spacing, etc.).
 There are many different document formats available to you, ranging from *minimal* to *book* - though further explanation is a beyond an introductory article.
 The final block of required markup is the document contents.
 
-    $ pdflatex hello.tex
+~~~ .bash
+$ pdflatex hello.tex
+~~~
 
 Finally, to generate the sample document as a PDF article the simple line above must be executed in the terminal.
 The resulting PDF from running this command is available [here](/uploads/latex-an-introduction/latex-basic.pdf).
@@ -60,23 +64,25 @@ The resulting PDF from running this command is available [here](/uploads/latex-a
 Now that we are familiar with the basic process of creating and generating output from a LaTeX document, we can begin to use some of the more powerful features available to us.
 As I explained at the beginning of this article, LaTeX provides you with a toolkit full of goodies that ease in the creation of both small and large documents (of varying types).
 
-    \documentclass{article}
-    \usepackage{graphicx}
-    \begin{document}
+~~~ .tex
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
 
-    \begin{center}
-      \includegraphics[width=3cm]{latex-logo.png}
-    \end{center}
+\begin{center}
+  \includegraphics[width=3cm]{latex-logo.png}
+\end{center}
 
-    \begin{tabular}{ | p {3cm} | p{5cm} | }
-      \hline
-      \textbf{Player} & \textbf{Position} \\ \hline
-      LeBron James & Small Forward \\ \hline
-      Dwayne Wade & Point Guard \\
-      \hline
-    \end{tabular}
+\begin{tabular}{ | p {3cm} | p{5cm} | }
+  \hline
+  \textbf{Player} & \textbf{Position} \\ \hline
+  LeBron James & Small Forward \\ \hline
+  Dwayne Wade & Point Guard \\
+  \hline
+\end{tabular}
 
-    \end{document}
+\end{document}
+~~~
 
 The above example introduces multiple features available to you (outputted result available [here](/uploads/latex-an-introduction/latex-advanced.pdf)), ranging from including a resized image to a formatted table.
 Reading through the example you will notice that the first difference from the first code snippet is the use of packages.

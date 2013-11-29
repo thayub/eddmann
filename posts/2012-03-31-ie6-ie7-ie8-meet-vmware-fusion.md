@@ -22,7 +22,6 @@ One of which is using [ievms](https://github.com/xdissent/ievms), which does exa
 
 For this tutorial I will be using the Windows XP VHD, which includes IE6 as standard. To begin you will need to download this image from [Internet Explorer Application Compatibility VPC Image](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=11575).
 Once successfully downloaded you will be able to extract the .EXE using a tool such as [The Unarchiver](http://wakaba.c3.cx/s/apps/unarchiver.html).
-
 You will now have two files of which to work with:
 
 * Windows XP.vhd
@@ -33,7 +32,9 @@ The easiest way I have researched into performing this task is to install [Q](ht
 
 Once you have installed Q, open up your Terminal and navigate to the folder which holds the VHD, once in there run the command below:
 
-    $ /Applications/Q.app/Contents/MacOS/qemu-img convert -O vmdk -f vpc Windows XP.vhd Windows XP.vmdk
+~~~ .bash
+$ /Applications/Q.app/Contents/MacOS/qemu-img convert -O vmdk -f vpc Windows XP.vhd Windows XP.vmdk
+~~~
 
 ### Installation
 

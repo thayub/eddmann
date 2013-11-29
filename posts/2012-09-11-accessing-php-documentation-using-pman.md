@@ -16,21 +16,27 @@ What I want is the same capability but in regard to PHP functions - thankfully t
 
 Installing 'pman' is incredibly easy using PEAR, all you have to do is run the command below:
 
-    $ pear install doc.php.net/pman
+~~~ .bash
+$ pear install doc.php.net/pman
+~~~
 
 Once the installation has successfully completed you can now access manual pages for PHP functions by calling 'pman' followed by the function name, for example:
 
-    $ pman strip_tags
+~~~ .bash
+$ pman strip_tags
+~~~
 
 ### I'm feeling lucky
 
 As an extra goody to get acquainted with as many functions as possible I have created a simple bash script, though a very crude implementation, which randomly selects a PHP manual page and displays it.
 
-    function rpman() {
-      cd `pman -w`
-      cd `ls | head -1`
-      a=(*);
-      func=$(echo ${a[$((RANDOM % ${#a[@]}))]} |
-             sed -E 's/([^0-9]).[0-9].gz/\1/')
-      pman $func
-    }
+~~~ .bash
+function rpman() {
+  cd `pman -w`
+  cd `ls | head -1`
+  a=(*);
+  func=$(echo ${a[$((RANDOM % ${#a[@]}))]} |
+         sed -E 's/([^0-9]).[0-9].gz/\1/')
+  pman $func
+}
+~~~

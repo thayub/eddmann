@@ -22,37 +22,39 @@ Obviously in a real-world setting this task would be handled by an heavily optim
 
 ### Java
 
-    public class MergeSort {
-        private static void merge(Comparable[] arr, Comparable[] tmp, int l, int m, int h) {
-            for (int i = l; i <= h; i++) tmp[i] = arr[i]; // copy order into temp array
-            int i = l, j = m + 1;
-            for (int k = l; k <= h; k++) {
-                if (i > m)                             arr[k] = tmp[j++]; // left complete
-                else if (j > h)                        arr[k] = tmp[i++]; // right complete
-                else if (tmp[j].compareTo(tmp[i]) < 0) arr[k] = tmp[j++]; // right < left
-                else                                   arr[k] = tmp[i++]; // left < right
-            }
-        }
-
-        private static void sort(Comparable[] arr, Comparable[] tmp, int l, int h) {
-            if (l >= h) return; // 0..1
-            int m = l + (h - l) / 2;
-            sort(arr, tmp, l, m);     // left
-            sort(arr, tmp, m + 1, h); // right
-            merge(arr, tmp, l, m, h);
-        }
-
-        public static void sort(Comparable[] arr) {
-            Comparable[] tmp = new Comparable[arr.length];
-            sort(arr, tmp, 0, arr.length - 1);
-        }
-
-        public static void main(String[] args) {
-            Integer[] arr = new Integer[] { 4, 2, 1, 3 };
-            sort(arr);
-            System.out.println(java.util.Arrays.toString(arr));
+~~~ .java
+public class MergeSort {
+    private static void merge(Comparable[] arr, Comparable[] tmp, int l, int m, int h) {
+        for (int i = l; i <= h; i++) tmp[i] = arr[i]; // copy order into temp array
+        int i = l, j = m + 1;
+        for (int k = l; k <= h; k++) {
+            if (i > m)                             arr[k] = tmp[j++]; // left complete
+            else if (j > h)                        arr[k] = tmp[i++]; // right complete
+            else if (tmp[j].compareTo(tmp[i]) < 0) arr[k] = tmp[j++]; // right < left
+            else                                   arr[k] = tmp[i++]; // left < right
         }
     }
+
+    private static void sort(Comparable[] arr, Comparable[] tmp, int l, int h) {
+        if (l >= h) return; // 0..1
+        int m = l + (h - l) / 2;
+        sort(arr, tmp, l, m);     // left
+        sort(arr, tmp, m + 1, h); // right
+        merge(arr, tmp, l, m, h);
+    }
+
+    public static void sort(Comparable[] arr) {
+        Comparable[] tmp = new Comparable[arr.length];
+        sort(arr, tmp, 0, arr.length - 1);
+    }
+
+    public static void main(String[] args) {
+        Integer[] arr = new Integer[] { 4, 2, 1, 3 };
+        sort(arr);
+        System.out.println(java.util.Arrays.toString(arr));
+    }
+}
+~~~
 
 As you can see from the above example, the sorting routine consists of three separate methods, resulting in an in-place sort.
 A temporary array is created once (same in size) and used to aid in the merging routine of the algorithm.
@@ -62,7 +64,8 @@ However, this example successfully shows the key ingredients for implementing su
 
 ### Scala
 
-<pre><code class="scala">def mergeSort[T](pred: (T, T) => Boolean)(xs: List[T]): List[T] = {
+~~~ .scala
+def mergeSort[T](pred: (T, T) => Boolean)(xs: List[T]): List[T] = {
     def merge(ls: List[T], rs: List[T]): List[T] = (ls, rs) match {
         case (List(), _) => rs
         case (_, List()) => ls
@@ -81,7 +84,7 @@ However, this example successfully shows the key ingredients for implementing su
 
 val intSort = mergeSort((_: Int) < (_: Int)) _
 println(intSort(List(4, 2, 1, 3)))
-</code></pre>
+~~~
 
 Well this looks alittle different, only two declared functions by-name, lets go through it piece-by-piece.
 The first point of note is the use of [Currying](http://en.wikipedia.org/wiki/Currying) to initially provide a comparable predicate, followed then by the list of values.

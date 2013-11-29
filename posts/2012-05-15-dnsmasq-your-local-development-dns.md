@@ -24,18 +24,24 @@ In a couple of return-key-hits from inside your package manager of choice you wi
 
 I will be installing and configuring a DNSMasq setup on a Ubuntu Server distrubtion, but installation on other setups should be fairly similar.
 
-    $ sudo apt-get install dnsmasq
+~~~ .bash
+$ sudo apt-get install dnsmasq
+~~~
 
 Upon successful installation you may be greeted with a unfriendly 'port 53 already in use' message.
 To resolve this issue use the following commands; first checking which process is already using port 53 and then killing that process by its id.
 
-    $ sudo netstat -anlp | grep -w LISTEN
-    $ sudo kill [process-id]
+~~~ .bash
+$ sudo netstat -anlp | grep -w LISTEN
+$ sudo kill [process-id]
+~~~
 
 The last step is to add all your local development domains to the host file found at '/etc/hosts'.
 Once all domains have been fully imported the final command that needs to be run is to restart DNSMasq.
 
-    $ sudo /etc/init.d/dnsmasq restart
+~~~ .bash
+$ sudo /etc/init.d/dnsmasq restart
+~~~
 
 To access your newly created DNS server, you can either individually add the servers IP address to each computers DNS network configuration or alternatively, point your routers DNS record to the IP address.
 
@@ -59,7 +65,9 @@ With DNSMasq we are able to easily setup a TLD wildcard which will check/match a
 As a consequence any URL request sent with a '.dev' TLD can be directed to my local development server for Apache to happily respond to.
 For setup on a software installation you are required to add the following line into your 'dnsconfig.conf'.
 
-    $ sudo "address=/dev/[dev-sever-ip]" >> /etc/dnsmasq.etc
+~~~ .bash
+$ sudo "address=/dev/[dev-sever-ip]" >> /etc/dnsmasq.etc
+~~~
 
 Or in the case of DD-WRT, adding the above configuration setting to the 'Additonal DNSMasq Options' textarea in the administration panel.
 

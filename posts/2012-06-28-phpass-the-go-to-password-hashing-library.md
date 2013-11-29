@@ -50,27 +50,31 @@ This allows you to set the amount of iterations to do per hash, which can be def
 There are many good examples of how to use PHPass already online (such as [here](http://sunnyis.me/blog/secure-passwords/)), so I will keep mine short and sweet.
 You can simply hash a password with PHPass using the code snippet below.
 
-    require_once('PasswordHash.php');
+~~~ .php
+require_once('PasswordHash.php');
 
-    // a new phpass instance, providing the iteration count
-    // and if to use the in-built MD5 crypto or not
-    $phpass = new PasswordHash(8, FALSE);
+// a new phpass instance, providing the iteration count
+// and if to use the in-built MD5 crypto or not
+$phpass = new PasswordHash(8, FALSE);
 
-    $password = 'password1234';
+$password = 'password1234';
 
-    $hash = $phpass->HashPassword($password);
+$hash = $phpass->HashPassword($password);
+~~~
 
 Its even easier to compare hashes, using the following code snippet.
 
-    $hash = '$2a$08$ezQB7LWGLPs3RtJLS9os5...';
+~~~ .php
+$hash = '$2a$08$ezQB7LWGLPs3RtJLS9os5...';
 
-    $password = 'passsword1234';
+$password = 'passsword1234';
 
-    if ($phpass->CheckPassword($password, $hash))
-      echo 'We have found a match!';
+if ($phpass->CheckPassword($password, $hash))
+  echo 'We have found a match!';
+~~~
 
 I am an avid CodeIgniter user at present, and was happy to discover that a quick search on GitHub returned a very cool PHPass wrapper library (love the use of the '\_call' function).
-The library can be found [here](https://github.com/segersjens/CodeIgniter-Phpass-Library).
+The library can be found [here](http://github.com/segersjens/CodeIgniter-Phpass-Library).
 
 The one and only point I hope you take away from this article is that if you are using PHP, use PHPass as your password hashing library!
 

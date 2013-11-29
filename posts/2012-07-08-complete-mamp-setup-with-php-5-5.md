@@ -23,10 +23,12 @@ This can be achieved by uncommenting 'LoadModule php5_module libexec/apache2/lib
 
 If you feel ultra-cool and want to use the latest and greatest from PHP - such as traits and yield, you can install PHP 5.5 using [Homebrew](http://brew.sh/) following the below intructions:
 
-    $ brew tap homebrew/dupes
-    $ brew tap josegonzalez/homebrew-php
-    $ brew options php55 # list available configuration options
-    $ brew install php55
+~~~ .bash
+$ brew tap homebrew/dupes
+$ brew tap josegonzalez/homebrew-php
+$ brew options php55 # list available configuration options
+$ brew install php55
+~~~
 
 To enable PHP 5.5 for use with Apache you need to replace the uncommented PHP module (from the last step) with 'LoadModule php5_module /usr/local/Cellar/php55/5.5.6/libexec/apache2/libphp5.so'.
 
@@ -36,15 +38,19 @@ To install MySQL I have decided to skip all the hard work of compiling my own bu
 Run the following commands to successfully setup your own personal MySQL installation.
 Remember to follow the instructions Homebrew provides you, I personally also recommend you run the optional secure installation script once complete (even if it is just a development setup).
 
-    $ brew install mysql
-    $ # The folder version may vary
-    $ /usr/local/Cellar/mysql/5.5.20/bin/mysql_secure_installation
+~~~ .bash
+$ brew install mysql
+$ # The folder version may vary
+$ /usr/local/Cellar/mysql/5.5.20/bin/mysql_secure_installation
+~~~
 
 We must then make Apache aware that MySQL now has setup shop on your system.
 To do this, run the following commands.
 
-    $ sudo mkdir /var/mysql
-    $ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+~~~ .bash
+$ sudo mkdir /var/mysql
+$ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+~~~
 
 Now we are ready to add DNSMasq into the mix.
 
@@ -54,13 +60,17 @@ Now that we have successfully setup are MAMP stack its time to add the magic sau
 I have already documented what DNSMasq is and how to set it up on a Linux distribution (Ubuntu) in a previous article so I will just skip the introductions and install it.
 To install DNSMasq on Mac OSX I have decided to follow a similar process to MySQL and let Homebrew do all the hard work.
 
-    $ brew install dnsmasq
+~~~ .bash
+$ brew install dnsmasq
+~~~
 
 Once successfully downloaded/installed follow the onscreen instructions and copy the configuration file to '/usr/local/etc/dnsmasq.conf'.
 Before continuing on to the second stage of installation however, we need to tell DNSMasq (using the copied configuration file) that we want any address with a [TLD](http://en.wikipedia.org/wiki/Top-level_domain) of '.dev' to loopback to our own machine.
 
-    address=/dev/127.0.0.1
-    listen-address=127.0.0.1
+~~~
+address=/dev/127.0.0.1
+listen-address=127.0.0.1
+~~~
 
 We then need to add our loopback address (127.0.0.1) as the first DNS record to our primary network adaptor.
 We do this by going to System Preferences, then Network, once there we click Advanced and then DNS.
@@ -69,32 +79,38 @@ Finally we can then add 127.0.0.1 as the first DNS record.
 The last step is to setup the last development Apache Virtual Host you will hopefully ever have to look at.
 Add the following Virtual Host information into your custom Apache configuration file, located at '/etc/apache2/users/[your-username].conf'.
 
-    NameVirtualHost *:80
+~~~ .apache
+NameVirtualHost *:80
 
-    <Directory "/Users/[your-username]/Sites/">
-      Options Indexes MultiViews FollowSymLinks Includes
-      AllowOverride All
-      Order allow,deny
-      Allow from all
-    </Directory>
+<Directory "/Users/[your-username]/Sites/">
+  Options Indexes MultiViews FollowSymLinks Includes
+  AllowOverride All
+  Order allow,deny
+  Allow from all
+</Directory>
 
-    <VirtualHost *:80>
-      UseCanonicalName off
-      VirtualDocumentRoot /Users/[your-username]/Sites/%1
-    </VirtualHost>
+<VirtualHost *:80>
+  UseCanonicalName off
+  VirtualDocumentRoot /Users/[your-username]/Sites/%1
+</VirtualHost>
+~~~
 
 All that is needed now is to simply restart Apache by using the following command.
 
-    $ sudo apachectl restart
+~~~ .bash
+$ sudo apachectl restart
+~~~
 
 You can now add a new folder to your '~/Sites' directory and without any other excess work visit the folder's name with the '.dev' TLD prepended in your browser of choice.
 I have added a simple function to my dotfiles which cuts out even this laborious task.
 
-    function newsite() {
-      mkdir -p ~/Sites/$1
-      echo "Hello, world..." > ~/Sites/$1/index.html
-      echo "<?php phpinfo();" > ~/Sites/$1/info.php
-    }
+~~~ .bash
+function newsite() {
+  mkdir -p ~/Sites/$1
+  echo "Hello, world..." > ~/Sites/$1/index.html
+  echo "<?php phpinfo();" > ~/Sites/$1/info.php
+}
+~~~
 
 Now that I have this setup I can not imagine a world without it.
 All the tedious work required in setting up a new project has now vanished!
