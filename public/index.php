@@ -46,18 +46,20 @@ function tmpl($file, $tmpl = [])
 
 function post($file)
 {
-    $contents = file_get_contents(POST_DIR . $file);
+    preg_match('/-+\n(.+)\n-+\n+(.+)/s', file_get_contents(POST_DIR . $file), $contents);
 
-    preg_match_all('/(.+): (.+)/', $contents, $metaMatches, PREG_SET_ORDER);
+    if (count($contents) != 3) {
+        return false;
+    }
+
+    preg_match_all('/(.+): (.+)/', $contents[1], $metaMatches, PREG_SET_ORDER);
 
     $meta = [];
     foreach ($metaMatches as $match) {
         $meta[trim($match[1])] = trim($match[2]);
     }
 
-    preg_match('/-+\n{2}(.*)/s', $contents, $postMatch);
-
-    if ( ! isset($meta['slug']) || ! isset($postMatch[1])) {
+    if ( ! isset($meta['slug'])) {
         return false;
     }
 
@@ -65,7 +67,7 @@ function post($file)
 
     return [
         'meta' => $meta,
-        'post' => trim($postMatch[1])
+        'post' => trim($contents[2])
     ];
 }
 
