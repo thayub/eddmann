@@ -1,6 +1,6 @@
 <?php
 
-use dflydev\markdown\MarkdownExtraParser as MarkdownParser;
+use \Michelf\MarkdownExtra as Markdown;
 
 define('USE_CACHE', $_SERVER['SERVER_PORT'] != 8080);
 
@@ -85,7 +85,7 @@ $output = cache($request, function() use ($request)
     if ($request) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
-                $post['post'] = (new MarkdownParser())->transformMarkdown($post['post']);
+                $post['post'] = Markdown::defaultTransform($post['post']);
                 return tmpl('post', $post);
             }
         }
