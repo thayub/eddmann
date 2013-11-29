@@ -2,7 +2,7 @@
 title: Coalescing operation in PHP (for default values)
 slug: coalescing-operation-in-php-for-default-values
 abstract: An example of the coalescing operation in PHP, useful for default values.
-date: 27th Nov 2013
+date: 28th Nov 2013
 ---
 
 Over the past week or so I have been reading discussions on the [PHP internals](http://news.php.net/php.internals) mailing-list about proposed updates to what the ?: operator currently does.
