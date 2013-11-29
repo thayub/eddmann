@@ -17,7 +17,7 @@ rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 # php
 yum --enablerepo=remi-php55,remi install -y \
     php php-fpm php-common php-cli php-opcache php-pecl-xdebug \
-    php-pear php-mysqlnd php-pdo php-sqlite php-gd php-mbstring \
+    php-pear php-mysqlnd php-pdo php-gd php-mbstring \
     php-mcrypt php-xml
 sed -i "s/^\;date\.timezone.*$/date\.timezone = \"Europe\/London\"/g" /etc/php.ini
 sed -i "s/^\expose_php.*$/expose_php = Off/g" /etc/php.ini
@@ -30,8 +30,8 @@ sed -i "s/^\display_startup_errors.*$/display_startup_errors = On/g" /etc/php.in
 # php-fpm
 chkconfig --levels 235 php-fpm on
 sed -i "s/^\listen.*$/listen = \/tmp\/php5-fpm.sock/g" /etc/php-fpm.d/www.conf
-mkdir /usr/lib/cgi-bin/
-/etc/init.d/php-fpm start
+sed -i "s/^\user.*$/user = nginx/g" /etc/php-fpm.d/www.conf
+sed -i "s/^\group.*$/group = nginx/g" /etc/php-fpm.d/www.conf
 
 # nginx
 echo "[nginx]
@@ -43,7 +43,10 @@ yum install -y nginx
 rm /etc/nginx/conf.d/default.conf
 ln -fs /vagrant/conf/local.conf /etc/nginx/conf.d/local.conf # use provided
 chkconfig --levels 235 nginx on
+
+# start
 /etc/init.d/nginx start
+/etc/init.d/php-fpm start
 
 # composer
 cd /home/vagrant
