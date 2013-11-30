@@ -95,7 +95,7 @@ The returning result definition can be omitted, as Scala can take the last expre
 
 A couple of design considerations that should be taken into account are that it uses linked-lists (instead of arrays), allowing us to perform a more elegant looking pattern match.
 Also, for simplicity I have not addressed tail-recursion and a O(N) cons stack blow-up is likely to occur with sufficient N.
-Maybe in a future post I will address this and explore an example using a lazy-evaluated Stream to aid in performance.
+Maybe in a future post I will address this and explore an example using a lazy-evaluated Stream.
 
 ### Resources
 
