@@ -46,7 +46,7 @@ function tmpl($file, $tmpl = [])
 
 function post($file)
 {
-    preg_match('/-+\n(.+)\n-+\n+(.+)/s', file_get_contents(POST_DIR . $file), $contents);
+    preg_match('/^-+\n(.+)\n-+\n+(.+)$/s', file_get_contents(POST_DIR . $file), $contents);
 
     if (count($contents) != 3) {
         return false;
