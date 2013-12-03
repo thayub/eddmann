@@ -12,7 +12,7 @@ An example of a combination is in the cards you are dealt in a poker-hand, out o
 We are able to calculate the unique hand offerings in many different ways, allowing us to predict how likely it is for an individual card to be dealt.
 In this post I will be showing examples solving the 10 choose 2 problem.
 
-The first implementation used a brute-force approach, generating all the pair-combinations and then returning the total length.
+The first implementation uses a brute-force approach, generating all the pair-combinations and then returning the total length.
 This is the most naive solution, however, it is a good example of how useful Scala's ranges and for-expressions are.
 
 ~~~ .scala
