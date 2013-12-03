@@ -49,6 +49,7 @@
             <?php endif; ?>
         <?php $break %= 3; endforeach; ?>
         </div>
+        <a rel="author" href="//plus.google.com/u/0/101874392726666406427?rel=author"></a>
     </section>
     <footer>
         <section id="latest-tweets">

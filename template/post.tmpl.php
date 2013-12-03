@@ -41,6 +41,7 @@
             <time>Published: <?php echo $tmpl['meta']['date']; ?><?php echo (isset($tmpl['meta']['revised'])) ? ', Revised: ' . $tmpl['meta']['revised'] : ''; ?></time>
             <?php echo $tmpl['post']; ?>
         </article>
+        <a rel="author" href="//plus.google.com/u/0/101874392726666406427?rel=author"></a>
     </section>
     <footer>
         <section id="latest-tweets">
