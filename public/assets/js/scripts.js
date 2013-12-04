@@ -1,6 +1,6 @@
-var tweets = new TweetFetch('354188847791366144');
+var tf = new TweetFetcher('354188847791366144');
 
-tweets.fetch(function(tweets)
+tf.fetch(function(tweets)
 {
     for (var output = '', i = 0, l = tweets.length; i < l; i++) {
         output +=

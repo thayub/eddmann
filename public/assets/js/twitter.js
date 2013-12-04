@@ -1,11 +1,11 @@
-var TweetFetch = function(id)
+var TweetFetcher = function(id)
 {
     this.id = id;
     this.instance = 'tf_' + (new Date().getTime());
     window[this.instance] = this;
 };
 
-TweetFetch.prototype.fetch = function(cb, limit)
+TweetFetcher.prototype.fetch = function(cb, limit)
 {
     this.cb = cb;
     this.limit = limit || 20;
@@ -13,11 +13,11 @@ TweetFetch.prototype.fetch = function(cb, limit)
     var s = document.createElement('script');
     s.src = '//cdn.syndication.twimg.com/widgets/timelines/' + encodeURIComponent(this.id) +
             '?&lang=en&callback=' + encodeURIComponent(this.instance + '.parse') + '&suppress_response_codes=true' +
-            'rnd=' + new Date().getTime();
+            'rnd=' + (new Date().getTime());
     document.getElementsByTagName('head')[0].appendChild(s);
 };
 
-TweetFetch.prototype.parse = function(res)
+TweetFetcher.prototype.parse = function(res)
 {
     var raw = document.createElement('div');
     raw.innerHTML = res.body;
@@ -38,11 +38,31 @@ TweetFetch.prototype.parse = function(res)
             stamp: tr.querySelector('time.dt-updated').getAttribute('datetime'),
             pretty: tr.querySelector('time.dt-updated').getAttribute('aria-label')
         }
-        t.content = tr.querySelector('p.e-entry-title').innerHTML.replace(/<\/?b[^>]*>/gi, '');
         t.isRetweet = !! tr.querySelector('.retweet-credit');
         t.retweets = tr.querySelector('span.stats-retweets')
             ? parseInt(tr.querySelector('span.stats-retweets').innerText.replace(',', ''), 10)
             : 0;
+
+        // delete all unnecessary tweet content tags
+
+        var content = tr.querySelector('p.e-entry-title'),
+            tags = content.querySelectorAll('*');
+
+        for (var j = 0; j < tags.length; j++) {
+            var tag = tags[j], k = 0, del = [];
+
+            for (k = 0; k < tag.attributes.length; k++) {
+                if (tag.attributes[k].name !== 'href') {
+                    del.push(tag.attributes[k].name);
+                }
+            }
+
+            while (del.length) {
+                tag.removeAttribute(del.pop());
+            }
+        }
+
+        t.content = content.innerHTML.replace(/<\/?b[^>]*>/gi, '');
 
         output.push(t);
     }
