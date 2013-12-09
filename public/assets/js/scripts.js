@@ -12,4 +12,10 @@ tf.fetch(function(tweets)
     document.getElementById('tweets').innerHTML = output;
 }, 2);
 
+for (var links = document.getElementsByTagName('a'), i = 0, l = links.length; i < l; i++) {
+    var link = links[i];
+    if (link.getAttribute('href') && link.hostname !== location.hostname)
+        link.target = '_blank';
+}
+
 hljs.initHighlightingOnLoad();
