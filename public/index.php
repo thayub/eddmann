@@ -87,7 +87,7 @@ function page($page, $limit = PER_PAGE)
     $end   = $start + $limit;
 
     foreach (posts() as $i => $post) {
-        if ($i > $end) yield true;
+        if ($i >= $end) yield true;
 
         if ($i >= $start && $i < $end) {
             yield $post;
