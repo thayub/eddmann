@@ -160,6 +160,12 @@ article {
     article ul, article ol {
       margin: 0 0 30px 20px; } }
 
+#navigation {
+  padding: 20px 30px;
+  text-align: right; }
+  #navigation a {
+    margin-left: 10px; }
+
 /**
  * Footer.
  */
@@ -226,6 +232,9 @@ footer #details {
 
   h3.tagline {
     display: none; }
+
+  .container.row {
+    margin: 0; }
 
   #content .post {
     border-right: 0;

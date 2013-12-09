@@ -39,16 +39,21 @@
     <section id="content">
         <h3 class="tagline"><span>I make stuff for the web</span> and occasionally ramble about it here.</h3>
         <div class="container row">
-        <?php $break = 0; foreach ($tmpl['posts'] as $post): ?>
+        <?php $break = 0; $next = false; foreach ($posts as $i => $post): ?>
+            <?php if (is_bool($post)) { $next = true; break; } ?>
             <div class="post col span_8">
                 <h4><a href="<?php echo $post['meta']['url']; ?>"><?php echo $post['meta']['title']; ?></a></h4>
                 <p><?php echo $post['meta']['abstract']; ?></p>
             </div>
-            <?php if ($break++ == 2): ?>
+            <?php if ($break++ == 2 && $i < PER_PAGE - 1): ?>
                 </div>
                 <div class="container row">
             <?php endif; ?>
         <?php $break %= 3; endforeach; ?>
+        </div>
+        <div class="container" id="navigation">
+            <?php if ($page > 1) echo '<a href="/page/' . ($page - 1). '/">&#171; Back</a>'; ?>
+            <?php if ($next) echo '<a href="/page/' . ($page + 1) . '/">Next &#187;</a>'; ?>
         </div>
         <a rel="author" href="//plus.google.com/u/0/101874392726666406427?rel=author"></a>
     </section>

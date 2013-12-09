@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<?php echo $tmpl['meta']['abstract']; ?>">
+    <meta name="description" content="<?php echo $meta['abstract']; ?>">
 
-    <title><?php echo $tmpl['meta']['title']; ?> • edd mann</title>
+    <title><?php echo $meta['title']; ?> • edd mann</title>
 
     <link rel="stylesheet" href="/assets/css/styles.min.css">
 
@@ -38,9 +38,9 @@
     </header>
     <section id="content">
         <article class="container">
-            <h2><?php echo $tmpl['meta']['title']; ?></h2>
-            <time>Published: <?php echo $tmpl['meta']['date']; ?><?php echo (isset($tmpl['meta']['revised'])) ? ', Revised: ' . $tmpl['meta']['revised'] : ''; ?></time>
-            <?php echo $tmpl['post']; ?>
+            <h2><?php echo $meta['title']; ?></h2>
+            <time>Published: <?php echo $meta['date']; ?><?php echo (isset($meta['revised'])) ? ', Revised: ' . $meta['revised'] : ''; ?></time>
+            <?php echo $post; ?>
         </article>
         <a rel="author" href="//plus.google.com/u/0/101874392726666406427?rel=author"></a>
     </section>

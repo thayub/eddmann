@@ -9,6 +9,7 @@ define('TMPL_EXT',  '.tmpl.php');
 define('CACHE_DIR', '../cache/');
 define('POST_DIR',  '../posts/');
 define('POST_URL',  'posts/');
+define('PER_PAGE',  9);
 
 require('../vendor/autoload.php');
 
@@ -80,22 +81,48 @@ function posts()
     }
 }
 
+function page($page, $limit = PER_PAGE)
+{
+    $start = ($page - 1) * $limit;
+    $end   = $start + $limit;
+
+    foreach (posts() as $i => $post) {
+        if ($i > $end) yield true;
+
+        if ($i >= $start && $i < $end) {
+            yield $post;
+        }
+    }
+}
+
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
-$output = cache($request, function() use ($request)
+if (preg_match('/^page\/[1-9][0-9]*$/', $request)) {
+    $page = (int) explode('/', $request)[1];
+    $isPage = true;
+} else {
+    $page = 1;
+    $isPage = false;
+}
+
+$output = cache($request, function() use ($request, $page, $isPage)
 {
-    if ($request) {
+    if ($request && ! $isPage) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
                 $post['post'] = Markdown::defaultTransform($post['post']);
                 return tmpl('post', $post);
             }
         }
-
-        return false;
     } else {
-        return tmpl('main', [ 'posts' => posts() ]);
+        $posts = page($page);
+
+        if ($posts->key() !== null) {
+            return tmpl('main', [ 'posts' => $posts, 'page' => $page ]);
+        }
     }
+
+    return false;
 });
 
 if ($output === false) {
