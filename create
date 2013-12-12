@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+if ( ! isset($argv[1])) {
+    echo "Title required.\n";
+    exit(1);
+}
+
+function slug($str)
+{
+    $clean = strtolower(trim($str, '/'));
+    $clean = preg_replace('/[^a-z0-9\-_ ]/', ' ', $clean);
+    return preg_replace('/\s+/', '-', $clean);
+}
+
+$title = $argv[1];
+
+$template = <<<EOT
+---
+title: %s
+slug: %s
+abstract: Abstract here...
+date: %s
+---
+
+Blog away...
+EOT;
+
+file_put_contents(
+    sprintf('./posts/%s-%s', date('Y-m-d'), slug($title)),
+    sprintf($template, $title, slug($title), date('jS M Y'))
+);
+
+echo "Blog away...\n";
