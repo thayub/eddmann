@@ -27,7 +27,7 @@ Blog away...
 EOT;
 
 file_put_contents(
-    sprintf('./posts/%s-%s', date('Y-m-d'), slug($title)),
+    sprintf('./posts/%s-%s.md', date('Y-m-d'), slug($title)),
     sprintf($template, $title, slug($title), date('jS M Y'))
 );
 
