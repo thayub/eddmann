@@ -29,8 +29,8 @@
             <nav class="col span_12">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="http://twitter.com/edd_mann" target="_blank">Twitter</a></li>
-                    <li><a href="http://github.com/eddmann" target="_blank">GitHub</a></li>
+                    <li><a href="http://workshop.eddmann.com" target="_blank">Workshop</a></li>
+                    <li><a href="http://threedevsandamaybe.com" target="_blank">Podcast</a></li>
                     <li><a href="/EdwardMannProgrammerCV.pdf">CV</a></li>
                 </ul>
             </nav>
