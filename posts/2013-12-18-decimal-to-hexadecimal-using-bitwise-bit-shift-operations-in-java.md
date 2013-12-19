@@ -77,7 +77,7 @@ With this knowledge, we simply only have to generate a random number between and
 We then can convert this decimal representation into hexadecimal using are built implementation.
 There are only two points I would like to make about the code below, most importantly the removal of the the first two characters of the string returned.
 This is due to hex-triplets only using 6 positions, which means the most significant two are not required.
-Also Java's 'nextInt' method is inclusive of 0 and exclusive of the provided maximum value, so we must add one to the desired range to return a correct.
+Also Java's 'nextInt' method is inclusive of 0 and exclusive of the provided maximum value, so we must add one to the desired range to return a correct result.
 
 ~~~ .java
 public static String randomWebColour()
