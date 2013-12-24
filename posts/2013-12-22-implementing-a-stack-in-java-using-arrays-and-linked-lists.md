@@ -145,7 +145,7 @@ Below is an example showing the array implementation in action.
 As you can see I have declared the variable instance as the Stack interface type, doing so allows me to easily switch out the implementation if future requirements warrant it.
 
 ~~~ .java
-Stack<String> greeting = new StackArray<String>();
+Stack<String> greeting = new StackArray<>();
 
 greeting.push("!").push("World").push("Hello, ");
 
