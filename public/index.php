@@ -74,7 +74,11 @@ function post($file)
 
 function posts()
 {
-    foreach (array_reverse(glob(POST_DIR . '*')) as $file) {
+    $files = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator(POST_DIR), RecursiveIteratorIterator::SELF_FIRST
+    );
+
+    foreach (array_reverse(iterator_to_array($files)) as $file) {
         if ($post = post($file)) {
             yield $post;
         }
