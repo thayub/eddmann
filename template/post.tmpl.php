@@ -42,6 +42,7 @@
             <time>Published: <?php echo $meta['date']; ?><?php echo (isset($meta['revised'])) ? ', Revised: ' . $meta['revised'] : ''; ?></time>
             <?php echo $post; ?>
         </article>
+        <div id="disqus_thread" class="container"></div>
         <a rel="author" href="//plus.google.com/u/0/101874392726666406427?rel=author"></a>
     </section>
     <footer>
@@ -64,6 +65,8 @@
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
+        (function() {var dsq = document.createElement('script'); dsq.async = true; dsq.src = '//eddmann.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();
     </script>
     <script src="/assets/js/scripts.min.js"></script>
 </body>

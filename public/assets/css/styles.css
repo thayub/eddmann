@@ -243,3 +243,10 @@ footer #details {
     border-bottom: 1px dotted #CCC; }
     #content .post.last {
       border-bottom: 0; } }
+/**
+ * Disqus
+ */
+#disqus_thread {
+  border-top: 1px dotted #CCC;
+  padding-top: 35px;
+  margin-bottom: 25px; }
