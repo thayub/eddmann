@@ -17,5 +17,3 @@ for (var links = document.getElementsByTagName('a'), i = 0, l = links.length; i 
     if (link.getAttribute('href') && link.hostname !== location.hostname)
         link.target = '_blank';
 }
-
-hljs.initHighlightingOnLoad();

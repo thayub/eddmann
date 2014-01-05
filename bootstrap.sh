@@ -49,6 +49,9 @@ cd /home/vagrant
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
+# pygments
+yum install -y python-pygments
+
 # aliases
 echo "alias v=\"clear;cd /vagrant\"" >> /home/vagrant/.bashrc
 echo "alias c=\"clear\"" >> /home/vagrant/.bashrc

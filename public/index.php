@@ -95,6 +95,30 @@ function page($page, $limit = PER_PAGE)
     }
 }
 
+function pygments($contents)
+{
+    return preg_replace_callback('/~~~[\s]?.([a-z]+)\n(.*?)\n~~~/s', function($match)
+    {
+        list($orig, $lang, $code) = $match;
+
+        $process = proc_open(
+            sprintf('pygmentize -f html -O style=default,startinline -l %s', $lang),
+            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ], [ 'pipe', 'w' ] ],
+            $pipes
+        );
+
+        fwrite($pipes[0], $code);
+        fclose($pipes[0]);
+
+        $output = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+
+        return (proc_close($process))
+            ? $code
+            : $output;
+    }, $contents);
+}
+
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
 if (preg_match('/^page\/[1-9][0-9]*$/', $request)) {
@@ -110,7 +134,7 @@ $output = cache($request, function() use ($request, $page, $isPage)
     if ($request && ! $isPage) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
-                $post['post'] = Markdown::defaultTransform($post['post']);
+                $post['post'] = Markdown::defaultTransform(pygments($post['post']));
                 return tmpl('post', $post);
             }
         }

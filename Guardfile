@@ -2,7 +2,7 @@ guard :concat, :type => 'css', :files => %w[ reset grid styles syntax ], :input_
 
 guard :sass, :input => 'public/assets/sass', :output => 'public/assets/css'
 
-guard :concat, :type => 'js', :files => %w[ highlight twitter scripts ], :input_dir => 'public/assets/js', :output => 'public/assets/js/scripts.min'
+guard :concat, :type => 'js', :files => %w[ twitter scripts ], :input_dir => 'public/assets/js', :output => 'public/assets/js/scripts.min'
 
 module ::Guard
     class Refresher < Guard
