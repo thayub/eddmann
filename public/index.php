@@ -95,14 +95,14 @@ function page($page, $limit = PER_PAGE)
     }
 }
 
-function pygments($contents)
+function pygments($post)
 {
     return preg_replace_callback('/~~~[\s]?.([a-z]+)\n(.*?)\n~~~/s', function($match)
     {
         list($orig, $lang, $code) = $match;
 
-        $process = proc_open(
-            sprintf('pygmentize -f html -O style=default,startinline -l %s', $lang),
+        $proc = proc_open(
+            'pygmentize -f html -O style=default,startinline -l ' . $lang,
             [ [ 'pipe', 'r' ], [ 'pipe', 'w' ], [ 'pipe', 'w' ] ],
             $pipes
         );
@@ -113,10 +113,10 @@ function pygments($contents)
         $output = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
 
-        return (proc_close($process))
-            ? $code
+        return (proc_close($proc))
+            ? $orig
             : $output;
-    }, $contents);
+    }, $post);
 }
 
 $request = trim($_SERVER['REQUEST_URI'], '/');
