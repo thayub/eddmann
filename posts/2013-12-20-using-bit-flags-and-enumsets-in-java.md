@@ -64,7 +64,7 @@ Another glaring issue is that they are not type safe, nullifying the benefits of
 I should point out that there is another Set implementation called [BitSet](http://docs.oracle.com/javase/7/docs/api/java/util/BitSet.html) which provides similar functionality.
 It is recommended that if you desire a flagging system such as the use-case described an EnumSet will provide you with the best results.
 
-~~~ .no-highlight
+~~~ .java
 public enum Flag {
     UPPERCASE, REVERSE, FULL_STOP, EMPHASISE;
 

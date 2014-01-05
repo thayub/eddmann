@@ -36,13 +36,13 @@ $ git commit --amend --date "`date -R`" # include '-C HEAD' to bypass commit mes
 
 Finally, to alter a previous commit by SHA reference hash, you can run the following command (altered from [GitFaq](http://git.wiki.kernel.org/index.php/GitFaq#How_can_I_tweak_the_date_of_a_commit_in_the_repo.3F)).
 
-~~~ .xml
+~~~ .bash
 $ git filter-branch --env-filter \
-    "if test \$GIT_COMMIT = 'e6dbcffca68e4b51887ef660e2389052193ba4f4'
-    then
-        export GIT_AUTHOR_DATE='Sat, 14 Dec 2013 12:40:00 +0000'
-        export GIT_COMMITTER_DATE='Sat, 14 Dec 2013 12:40:00 +0000'
-    fi" && rm -fr "$(git rev-parse --git-dir)/refs/original/"
+"if test \$GIT_COMMIT = 'e6dbcffca68e4b51887ef660e2389052193ba4f4'
+then
+    export GIT_AUTHOR_DATE='Sat, 14 Dec 2013 12:40:00 +0000'
+    export GIT_COMMITTER_DATE='Sat, 14 Dec 2013 12:40:00 +0000'
+fi" && rm -fr "$(git rev-parse --git-dir)/refs/original/"
 ~~~
 
 ### Viewing the alterations
@@ -50,8 +50,8 @@ $ git filter-branch --env-filter \
 We can now check out our handy work by looking at the log again, providing --since and --until options to filter the results.
 
 ~~~ .bash
-git log --since="yesterday"
-git log --since="1 month ago" --until="yesterday"
+$ git log --since="yesterday"
+$ git log --since="1 month ago" --until="yesterday"
 ~~~
 
 ### Resources

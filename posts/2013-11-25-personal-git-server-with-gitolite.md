@@ -54,7 +54,7 @@ $ git clone git@localhost:gitolite-admin.git
 We are now able to manage the server's repositories and user access privileges from 'conf/gitolite.conf'.
 Adding and then commit/pushing the following change will create a new empty repository called 'helloworld' which everyone has read/write access to.
 
-~~~
+~~~ .text
 repo helloworld
     RW+ = @all
 ~~~

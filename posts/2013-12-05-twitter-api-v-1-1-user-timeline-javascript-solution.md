@@ -108,7 +108,7 @@ tf.fetch(function(tweets)
 
 When the response has been parsed the supplied callback is given an array of processed tweets, each providing the following information.
 
-~~~ .json
+~~~ .javascript
 {
     id: '408662284337422337',
     author: {

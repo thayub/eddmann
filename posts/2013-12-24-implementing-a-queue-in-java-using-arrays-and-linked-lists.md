@@ -21,7 +21,7 @@ interface Queue<T> {
 }
 ~~~
 
-### Array-base implementation
+### Array-based implementation
 
 The first implementation stores the underlying collection in a fixed-sized array.
 Discussed in the previous post on stacks, this approach provides constant time 'O(1)' lookup on all items stored in the array, however, this is not of concern to us in this case.

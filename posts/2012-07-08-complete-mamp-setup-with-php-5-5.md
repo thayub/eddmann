@@ -67,7 +67,7 @@ $ brew install dnsmasq
 Once successfully downloaded/installed follow the onscreen instructions and copy the configuration file to '/usr/local/etc/dnsmasq.conf'.
 Before continuing on to the second stage of installation however, we need to tell DNSMasq (using the copied configuration file) that we want any address with a [TLD](http://en.wikipedia.org/wiki/Top-level_domain) of '.dev' to loopback to our own machine.
 
-~~~
+~~~ .text
 address=/dev/127.0.0.1
 listen-address=127.0.0.1
 ~~~

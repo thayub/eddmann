@@ -78,7 +78,7 @@ A trivial replacement for some Google Analytics statistics, reporting how many h
 
 <figcaption>Real-time IP-Page Requests</figcaption>
 
-~~~ .no-highlight
+~~~ .bash
 $ tailf access.log | awk '{ printf("%-15s\t%s\t%s\t%s\n", $1, $6, $9, $7) }'
 $ tailf access.log | awk '{
     "geoiplookup " $1 " | cut -d \\: -f2 " | getline geo

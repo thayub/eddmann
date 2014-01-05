@@ -24,7 +24,9 @@ Obviously in a real-world setting this task would be handled by an heavily optim
 
 ~~~ .java
 public class MergeSort {
-    private static void merge(Comparable[] arr, Comparable[] tmp, int l, int m, int h) {
+
+    private static void merge(Comparable[] arr, Comparable[] tmp, int l, int m, int h)
+    {
         for (int i = l; i <= h; i++) tmp[i] = arr[i]; // copy order into temp array
         int i = l, j = m + 1;
         for (int k = l; k <= h; k++) {
@@ -35,7 +37,8 @@ public class MergeSort {
         }
     }
 
-    private static void sort(Comparable[] arr, Comparable[] tmp, int l, int h) {
+    private static void sort(Comparable[] arr, Comparable[] tmp, int l, int h)
+    {
         if (l >= h) return; // 0..1
         int m = l + (h - l) / 2;
         sort(arr, tmp, l, m);     // left
@@ -43,16 +46,19 @@ public class MergeSort {
         merge(arr, tmp, l, m, h);
     }
 
-    public static void sort(Comparable[] arr) {
+    public static void sort(Comparable[] arr)
+    {
         Comparable[] tmp = new Comparable[arr.length];
         sort(arr, tmp, 0, arr.length - 1);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Integer[] arr = new Integer[] { 4, 2, 1, 3 };
         sort(arr);
         System.out.println(java.util.Arrays.toString(arr));
     }
+
 }
 ~~~
 
