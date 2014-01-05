@@ -102,7 +102,7 @@ function pygments($post)
         list($orig, $lang, $code) = $match;
 
         $proc = proc_open(
-            'pygmentize -f html -O style=default,startinline -l ' . $lang,
+            'pygmentize -f html -O style=default,encoding=utf-8,startinline -l ' . $lang,
             [ [ 'pipe', 'r' ], [ 'pipe', 'w' ], [ 'pipe', 'w' ] ],
             $pipes
         );
