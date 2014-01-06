@@ -97,13 +97,13 @@ function page($page, $limit = PER_PAGE)
 
 function pygments($post)
 {
-    return preg_replace_callback('/~~~[\s]?.([a-z]+)\n(.*?)\n~~~/s', function($match)
+    return preg_replace_callback('/~~~[\s]*.([a-z]+)\n(.*?)\n~~~/is', function($match)
     {
         list($orig, $lang, $code) = $match;
 
         $proc = proc_open(
             'pygmentize -f html -O style=default,encoding=utf-8,startinline -l ' . $lang,
-            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ], [ 'pipe', 'w' ] ],
+            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ] /* ignore stderr */ ],
             $pipes
         );
 
