@@ -4,7 +4,7 @@
     background-color:#3f3f3f;
     padding: 20px;
     line-height: 1.6em;
-    overflow: hidden;
+    overflow: auto;
 }
 .highlight .hll
 {

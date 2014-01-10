@@ -138,7 +138,7 @@ function dot($post)
         fclose($pipes[1]);
 
         if ( ! proc_close($proc)) {
-            $output = preg_replace('/.*<svg/s', '<svg', $output);
+            $output = preg_replace('/.*<svg/s', '<svg x="0px" y="0px" style="max-width:100%;max-height:100%"', $output);
             $output = preg_replace('/<!--(.*)-->/Uis', '', $output);
             $output = preg_replace('/id="(.*?)"/s', 'id="$1_' . rand() . '"', $output);
         } else {

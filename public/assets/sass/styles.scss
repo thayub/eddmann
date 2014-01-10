@@ -160,18 +160,13 @@ article {
         color: #AAA;
     }
 
-    pre + h3 {
+    .highlight + h3 {
         margin-top: 35px;
     }
 
     ul, ol {
         margin: 0 0 30px 40px;
         line-height: 1.8em;
-    }
-
-    pre {
-        margin-bottom: 20px;
-        overflow: hidden;
     }
 
     figure {
@@ -337,6 +332,6 @@ footer {
 
 svg {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 20px auto;
     display: block;
 }

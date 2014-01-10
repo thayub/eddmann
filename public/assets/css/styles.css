@@ -131,14 +131,11 @@ article {
     display: block;
     margin: 20px 0;
     color: #AAA; }
-  article pre + h3 {
+  article .highlight + h3 {
     margin-top: 35px; }
   article ul, article ol {
     margin: 0 0 30px 40px;
     line-height: 1.8em; }
-  article pre {
-    margin-bottom: 20px;
-    overflow: hidden; }
   article figure {
     display: block;
     margin-bottom: 20px;
@@ -256,5 +253,5 @@ footer #details {
  */
 svg {
   max-width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: block; }
