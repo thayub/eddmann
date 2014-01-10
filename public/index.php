@@ -119,6 +119,36 @@ function pygments($post)
     }, $post);
 }
 
+function dot($post)
+{
+    return preg_replace_callback('/~~~[\s]*\.dot-show\n(.*?)\n~~~/is', function($match)
+    {
+        list($orig, $dot) = $match;
+
+        $proc = proc_open(
+            'dot -Tsvg',
+            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ] /* ignore stderr */ ],
+            $pipes
+        );
+
+        fwrite($pipes[0], $dot);
+        fclose($pipes[0]);
+
+        $output = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+
+        if ( ! proc_close($proc)) {
+            $output = preg_replace('/.*<svg/s', '<svg', $output);
+            $output = preg_replace('/<!--(.*)-->/Uis', '', $output);
+            $output = preg_replace('/id="(.*?)"/s', 'id="$1_' . rand() . '"', $output);
+        } else {
+            $output = $orig;
+        }
+
+        return $output;
+    }, $post);
+}
+
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
 if (preg_match('/^page\/[1-9][0-9]*$/', $request)) {
@@ -134,7 +164,7 @@ $output = cache($request, function() use ($request, $page, $isPage)
     if ($request && ! $isPage) {
         foreach (posts() as $post) {
             if (POST_URL . $post['meta']['slug'] == $request) {
-                $post['post'] = Markdown::defaultTransform(pygments($post['post']));
+                $post['post'] = Markdown::defaultTransform(pygments(dot($post['post'])));
                 return tmpl('post', $post);
             }
         }

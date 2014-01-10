@@ -244,9 +244,17 @@ footer #details {
     #content .post.last {
       border-bottom: 0; } }
 /**
- * Disqus
+ * Disqus.
  */
 #disqus_thread {
   border-top: 1px dotted #CCC;
   padding-top: 35px;
   margin-bottom: 25px; }
+
+/**
+ * Graphviz.
+ */
+svg {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block; }
