@@ -38,7 +38,7 @@ This decision proved very useful when producing the example implementation below
 ~~~ .php
 function pygments($post)
 {
-    return preg_replace_callback('/~~~[\s]*.([a-z]+)\n(.*?)\n~~~/is', function($match)
+    return preg_replace_callback('/~~~[\s]*\.([a-z]+)\n(.*?)\n~~~/is', function($match)
     {
         list($orig, $lang, $code) = $match;
 
