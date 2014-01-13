@@ -14,9 +14,9 @@ foreach ($posts as $post)
 {
     $item = $chan->appendChild($xml->createElement('item'));
     $item->appendChild($xml->createElement('title', str_replace('&', '&amp;', $post['meta']['title'])));
-    $item->appendChild($xml->createElement('link', 'http://eddmann.com/' . config('post.url') . $post['meta']['slug'] . '/'));
+    $item->appendChild($xml->createElement('link', 'http://eddmann.com' . $post['meta']['url']));
     $item->appendChild($xml->createElement('description', str_replace('&', '&amp;', $post['meta']['abstract'])));
-    $item->appendChild($xml->createElement('guid', $post['meta']['url'] . '/'));
+    $item->appendChild($xml->createElement('guid', 'http://eddmann.com' . $post['meta']['url']));
     $item->appendChild($xml->createElement('pubDate', date(DATE_RSS, strtotime($post['meta']['date']))));
 }
 
