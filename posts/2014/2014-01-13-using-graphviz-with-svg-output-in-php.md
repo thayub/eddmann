@@ -42,7 +42,8 @@ function dot($post)
 
         if ( ! proc_close($proc)) {
             $output = preg_replace(
-                '/.*<svg width="[0-9]+pt" height="([0-9]+pt)"/s', '<svg style="max-height:$1;" ',
+                '/.*<svg width="[0-9]+pt" height="([0-9]+pt)"/s',
+                '<svg style="max-height:$1;" ',
                 $output
             );
             $output = preg_replace('/<!--(.*)-->/Uis', '', $output);
