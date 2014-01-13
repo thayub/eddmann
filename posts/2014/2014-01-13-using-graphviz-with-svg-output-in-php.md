@@ -22,7 +22,7 @@ For consistency I decided to declare graph definitions using Markdown Extra's [f
 Providing the code block with a unique '.dot-show' language type-hint allowed me to be sure of no conflicting pre-processes.
 
 ~~~ .php
-function dot($post)
+function graphviz($post)
 {
     return preg_replace_callback('/~~~[\s]*\.dot-show\n(.*?)\n~~~/is', function($match)
     {
