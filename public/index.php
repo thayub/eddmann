@@ -1,153 +1,6 @@
 <?php
 
-use \Michelf\MarkdownExtra as Markdown;
-
-define('USE_CACHE', $_SERVER['SERVER_PORT'] != 8080);
-
-define('TMPL_DIR',  '../template/');
-define('TMPL_EXT',  '.tmpl.php');
-define('CACHE_DIR', '../cache/');
-define('POST_DIR',  '../posts/');
-define('POST_URL',  'posts/');
-define('PER_PAGE',  9);
-
-require('../vendor/autoload.php');
-
-function cache($key, $content)
-{
-    if ( ! USE_CACHE) return $content();
-
-    ! is_dir(CACHE_DIR) && mkdir(CACHE_DIR);
-
-    $path = CACHE_DIR . md5($key);
-
-    if ( ! file_exists($path)) {
-        $result = $content();
-
-        if ($result !== false) {
-            file_put_contents($path, $result);
-        } else {
-            return false;
-        }
-    }
-
-    return file_get_contents($path);
-}
-
-function tmpl($file, $tmpl = [])
-{
-    ob_start();
-
-    extract($tmpl);
-
-    eval('?>' . file_get_contents(TMPL_DIR . $file . TMPL_EXT));
-
-    return ob_get_clean();
-}
-
-function post($file)
-{
-    preg_match('/^-+\n(.+)\n-+\n+(.+)$/s', file_get_contents(POST_DIR . $file), $contents);
-
-    if (count($contents) != 3) {
-        return false;
-    }
-
-    preg_match_all('/(.+): (.+)/', $contents[1], $metaMatches, PREG_SET_ORDER);
-
-    $meta = [];
-    foreach ($metaMatches as $match) {
-        $meta[trim($match[1])] = trim($match[2]);
-    }
-
-    if ( ! isset($meta['slug'])) {
-        return false;
-    }
-
-    $meta['url'] = '/' . POST_URL . $meta['slug'] . '/';
-
-    return [
-        'meta' => $meta,
-        'post' => trim($contents[2])
-    ];
-}
-
-function posts()
-{
-    foreach (array_reverse(glob(POST_DIR . '*/*')) as $file) {
-        if ($post = post($file)) {
-            yield $post;
-        }
-    }
-}
-
-function page($page, $limit = PER_PAGE)
-{
-    $start = ($page - 1) * $limit;
-    $end   = $start + $limit;
-
-    foreach (posts() as $i => $post) {
-        if ($i >= $end) yield true;
-
-        if ($i >= $start && $i < $end) {
-            yield $post;
-        }
-    }
-}
-
-function pygments($post)
-{
-    return preg_replace_callback('/~~~[\s]*\.([a-z]+)\n(.*?)\n~~~/is', function($match)
-    {
-        list($orig, $lang, $code) = $match;
-
-        $proc = proc_open(
-            'pygmentize -f html -O style=default,encoding=utf-8,startinline -l ' . $lang,
-            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ] /* ignore stderr */ ],
-            $pipes
-        );
-
-        fwrite($pipes[0], $code);
-        fclose($pipes[0]);
-
-        $output = stream_get_contents($pipes[1]);
-        fclose($pipes[1]);
-
-        return (proc_close($proc))
-            ? $orig
-            : $output;
-    }, $post);
-}
-
-function dot($post)
-{
-    return preg_replace_callback('/~~~[\s]*\.dot-show\n(.*?)\n~~~/is', function($match)
-    {
-        list($orig, $dot) = $match;
-
-        $proc = proc_open(
-            'dot -Tsvg',
-            [ [ 'pipe', 'r' ], [ 'pipe', 'w' ] /* ignore stderr */ ],
-            $pipes
-        );
-
-        fwrite($pipes[0], $dot);
-        fclose($pipes[0]);
-
-        $output = stream_get_contents($pipes[1]);
-        fclose($pipes[1]);
-
-        if ( ! proc_close($proc)) {
-            $output = preg_replace('/.*<svg width="[0-9]+pt" height="([0-9]+pt)"/s', '<svg style="max-height:$1;" ', $output);
-            $output = preg_replace('/<!--(.*)-->/Uis', '', $output);
-            $output = preg_replace('/id="(.*?)"/s', 'id="$1_' . rand() . '"', $output);
-        } else {
-            $output = $orig;
-        }
-
-        return $output;
-    }, $post);
-}
+require '../vendor/autoload.php';
 
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
@@ -163,8 +16,9 @@ $output = cache($request, function() use ($request, $page, $isPage)
 {
     if ($request && ! $isPage) {
         foreach (posts() as $post) {
-            if (POST_URL . $post['meta']['slug'] == $request) {
-                $post['post'] = Markdown::defaultTransform(pygments(dot($post['post'])));
+            if (config('post.url') . $post['meta']['slug'] == $request) {
+                $filter = compose('markdown', 'pygments', 'graphviz');
+                $post['post'] = $filter($post['post']);
                 return tmpl('post', $post);
             }
         }

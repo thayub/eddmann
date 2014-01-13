@@ -45,7 +45,7 @@
                 <h4><a href="<?php echo $post['meta']['url']; ?>"><?php echo $post['meta']['title']; ?></a></h4>
                 <p><?php echo $post['meta']['abstract']; ?></p>
             </div>
-            <?php if ($break++ == 2 && $i < PER_PAGE - 1): ?>
+            <?php if ($break++ == 2 && $i < config('post.per') - 1): ?>
                 </div>
                 <div class="container row">
             <?php endif; ?>

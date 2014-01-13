@@ -2,6 +2,12 @@
     "require": {
         "michelf/php-markdown": "1.*"
     },
+    "autoload": {
+        "files": [
+            "./util.php",
+            "./post.php"
+        ]
+    },
     "config": {
         "preferred-install": "stable"
     },
