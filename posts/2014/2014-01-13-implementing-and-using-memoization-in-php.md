@@ -106,9 +106,9 @@ $fibonacci = $memoize(function($n) use (&$fibonacci)
     return ($n < 2) ? $n : $fibonacci($n - 1) + $fibonacci($n - 2);
 });
 
-echo '10! is ' . $factorial(10) . PHP_EOL;
+$factorial(10); // 3628800
 
-echo '10th fibonacci number is ' . $fibonacci(10) . PHP_EOL;
+$fibonacci(10); // 55
 ~~~
 
 ### Resources
