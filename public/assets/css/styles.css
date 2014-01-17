@@ -131,7 +131,7 @@ article {
     display: block;
     margin: 20px 0;
     color: #AAA; }
-  article .highlight + h3 {
+  article .highlight + h3, article .highlight + h4 {
     margin-top: 35px; }
   article ul, article ol {
     margin: 0 0 30px 40px;
