@@ -191,7 +191,6 @@ article {
     }
 
     @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-        img { max-width: 100%; }
         ul, ol { margin: 0 0 30px 20px; }
     }
 }
@@ -302,6 +301,10 @@ footer {
 
     .container.row {
         margin: 0;
+    }
+
+    img {
+        max-width: 100%;
     }
 
     #content .post {

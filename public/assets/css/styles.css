@@ -152,8 +152,6 @@ article {
     text-align: center;
     font-style: italic; }
   @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-    article img {
-      max-width: 100%; }
     article ul, article ol {
       margin: 0 0 30px 20px; } }
 
@@ -239,7 +237,10 @@ footer #details {
     padding: 20px 10px;
     border-bottom: 1px dotted #CCC; }
     #content .post.last {
-      border-bottom: 0; } }
+      border-bottom: 0; }
+
+  img {
+    max-width: 100%; } }
 /**
  * Disqus.
  */
