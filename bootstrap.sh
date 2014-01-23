@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# add 512mb swap
+dd if=/dev/zero of=/swapfile bs=1024 count=512k
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+chown root:root /swapfile
+chmod 0600 /swapfile
+
 # essentials
 yum install -y vim git
 
