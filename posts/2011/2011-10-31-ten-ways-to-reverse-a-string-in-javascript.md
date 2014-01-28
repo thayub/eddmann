@@ -51,7 +51,7 @@ Finally the created array is joined into a single string and returned.
 ~~~ .javascript
 function reverse(s) {
   var o = [];
-  for (var i = 0, len = s.length; i >= len; i++)
+  for (var i = 0, len = s.length; i <= len; i++)
     o.push(s.charAt(len - i));
   return o.join('');
 }
