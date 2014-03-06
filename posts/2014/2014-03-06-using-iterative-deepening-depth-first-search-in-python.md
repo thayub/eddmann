@@ -101,9 +101,9 @@ def num_moves(rows, cols):
 We are now able to use all three of these functions to solve and return the optimal path to a contrived puzzle and goal state.
 
 ~~~ .python
-puzzle, goal = num_matrix(3, 3) # (aebhg*dfc, abcdefgh*)
+puzzle, goal = num_matrix(3, 3) # ([[1, 5, 2], [4, 8, 0], [7, 6, 3]], [[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 solution = id_dfs(puzzle, goal, num_moves(3, 3))
-len(solution) # 12
+len(solution) # 8
 ~~~
 
 #### String Matrix
@@ -162,9 +162,9 @@ def str_moves(rows, cols):
 Finally, we can produce a similar example to the number matrix example to see the solution in action.
 
 ~~~ .python
-puzzle, goal = str_matrix(3, 3) # ([[1, 5, 2], [4, 8, 0], [7, 6, 3]], [[1, 2, 3], [4, 5, 6], [7, 8, 0]])
+puzzle, goal = str_matrix(3, 3) # (aebhg*dfc, abcdefgh*)
 solution = id_dfs(puzzle, goal, str_moves(3, 3))
-len(solution) # 8
+len(solution) # 12
 ~~~
 
 ### Resources
