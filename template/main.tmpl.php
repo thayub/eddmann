@@ -33,7 +33,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="http://workshop.eddmann.com" target="_blank">Workshop</a></li>
                     <li><a href="http://threedevsandamaybe.com" target="_blank">Podcast</a></li>
-                    <li><a href="/EdwardMannProgrammerCV.pdf">CV</a></li>
+                    <li><a href="/cv/">CV</a></li>
                 </ul>
             </nav>
         </div>
