@@ -162,17 +162,17 @@ We must first run 'phpize' to create the necessary build scripts, notice that I 
 In a similar manner we must also configure the build, supplying the full path to the 'php-config' application.
 
 ~~~ .bash
-$HOME/php/bin/phpize
-./configure --with-php-config=$HOME/php/bin/php-config
-make && make install
+$ $HOME/php/bin/phpize
+$ ./configure --with-php-config=$HOME/php/bin/php-config
+$ make && make install
 ~~~
 
 We can now test the extension is working correctly, by running the CLI PHP binary with the new extension specified.
 
 ~~~ .bash
-$HOME/php/bin/php -dextension=hello.so -r "echo hello_world();"       # Hello, World!
-$HOME/php/bin/php -dextension=hello.so -r "echo hello('JoE');"        # Hello, Joe!
-$HOME/php/bin/php -dextension=hello.so -r "echo hello('JoE', false);" # Hello, JoE!
+$ $HOME/php/bin/php -dextension=hello.so -r "echo hello_world();"       # Hello, World!
+$ $HOME/php/bin/php -dextension=hello.so -r "echo hello('JoE');"        # Hello, Joe!
+$ $HOME/php/bin/php -dextension=hello.so -r "echo hello('JoE', false);" # Hello, JoE!
 ~~~
 
 ### Resources
