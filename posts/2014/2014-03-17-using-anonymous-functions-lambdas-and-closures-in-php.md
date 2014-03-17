@@ -192,7 +192,7 @@ $v->register('isPermittedEmail', function() use ($domains)
     return false;
 });
 
-$v->check($email)
+$v->check('joe@bloggs.co.uk')
     ->is('present', 'permitted_email')
     ->valid(); // bool(true)
 ~~~
