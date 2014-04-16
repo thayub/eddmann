@@ -12,6 +12,8 @@
 
     <link rel="alternate" href="/rss.xml" title="edd mann • software developer" type="application/rss+xml" />
 
+    <link rel="shortcut icon" href="/favicon.ico" />
+
     <!--                                           _             _
      _ __   ___  ___  ___ _   _   _ __   __ _ _ __| | _____ _ __| |
     | '_ \ / _ \/ __|/ _ \ | | | | '_ \ / _` | '__| |/ / _ \ '__| |
