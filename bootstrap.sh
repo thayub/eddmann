@@ -40,6 +40,9 @@ chkconfig --levels 235 php-fpm on
 sed -i "s/^\listen.*$/listen = \/tmp\/php5-fpm.sock/g" /etc/php-fpm.d/www.conf
 sed -i "s/^\user.*$/user = nginx/g" /etc/php-fpm.d/www.conf
 sed -i "s/^\group.*$/group = nginx/g" /etc/php-fpm.d/www.conf
+sed -i "s/^\;listen\.owner.*$/listen.owner = nginx/g" /etc/php-fpm.d/www.conf
+sed -i "s/^\;listen\.group.*$/listen\.group = nginx/g" /etc/php-fpm.d/www.conf
+sed -i "s/^\;listen\.mode.*$/listen\.mode = 0660/g" /etc/php-fpm.d/www.conf
 
 # nginx
 rpm -Uvh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
