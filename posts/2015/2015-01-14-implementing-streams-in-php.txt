@@ -1,0 +1,221 @@
+---
+title: Implementing Streams in PHP
+slug: implementing-streams-in-php
+abstract: Multiple ways of implementing the Stream data-structure using PHP
+date: 14th Jan 2015
+---
+
+Typically when we think about a list of elements we assume there is both a start and finite end.
+This list has been precomputed and stored for subisquent traversal and transformation.
+If we instead however replaced the finte ending with a promise to instead return the next element in the sequence we would have the archecitre to provide infinite lists.
+Not only would these lists be capable of infitte elements, but they would be lazy and only probuce the next element in the sequenece when absolutely required.
+This concept is called a stream, also known as a lazy list and is a focundation concept in languages such as Haskell.
+Streams are not interacted with in a simliar manner as finite lists, as they cannot be operated as a whole, and instead can be thought of as codata (infinite) as a opposd to just data (finite).
+In an object oritented manner we can consider a stream implementing the Iterable interface contract.
+Not only are we able to create a stream of elements based on a defined behaviour we are also able to compose modified streams based on map and filter methods.
+In this article I hope to provide two seperate examples of implementing the stream data strucuture using both a classical and recently added genertor approach in PHP.
+
+### Classical Approach
+
+The first implementation I will be discussing is through the use of a class-based implementation which relies on a tail promise to return the next element in the stream.
+
+~~~ .php
+class Stream implements Iterator
+{
+    const NIL_SENTINEL = null;
+
+    private $head, $tail;
+    private $current, $key;
+
+    public function __construct($head, $tail = null)
+    {
+        $this->head = $head;
+        $this->tail = $tail ?: function () { return self::nil(); };
+    }
+
+    public function map(callable $f)
+    {
+        if ($this->isNil()) return $this;
+
+        return new self(call_user_func($f, $this->head), function () use ($f) {
+            return $this->tail()->map($f);
+        });
+    }
+
+    public function filter(callable $f)
+    {
+        if ($this->isNil()) return $this;
+
+        if (call_user_func($f, $this->head)) {
+            return new self($this->head, function () use ($f) {
+                return $this->tail()->filter($f);
+            });
+        }
+
+        return $this->tail()->filter($f);
+    }
+
+    public function take($n)
+    {
+        if ($this->isNil() || $n == 0) return self::nil();
+
+        return new self($this->head, function () use ($n) {
+            return $this->tail()->take($n - 1);
+        });
+    }
+
+    public static function range($start = 1, $end = INF)
+    {
+        if ($start == $end) return new self($start);
+
+        return new self($start, function () use ($start, $end) {
+            return self::range($start + 1, $end);
+        });
+    }
+
+    public function current()
+    {
+        return $this->current->head;
+    }
+
+    public function next()
+    {
+        $this->current = $this->current->tail();
+        $this->key++;
+    }
+
+    public function key()
+    {
+        return $this->key;
+    }
+
+    public function valid()
+    {
+        return ! $this->current->isNil();
+    }
+
+    public function rewind()
+    {
+        $this->current = $this;
+        $this->key = 0;
+    }
+
+    private function isNil()
+    {
+        return $this->head === self::NIL_SENTINEL;
+    }
+
+    private function tail()
+    {
+        return call_user_func($this->tail, $this->head);
+    }
+
+    private static function nil()
+    {
+        return new self(self::NIL_SENTINEL);
+    }
+}
+~~~
+
+Looking at the implementation above you can see how much bolierplate code is required to provide a simple iterator interface to the stream.
+Through use of a tail promise we are able to defer execution of calcuatling the next element in the stream until absolutly required.
+So as to more succeicenyly understand the following examples we will be using the function below to display the returned finite iterator.
+
+~~~ .php
+function sprint($xs)
+{
+    echo '[' . implode(', ', iterator_to_array($xs)) . "]\n";
+}
+~~~
+
+Using this helper function we are now able to experiement with the first implementation.
+
+~~~ .php
+$isEven = function ($x) { return $x % 2 == 0; };
+
+sprint(Stream::range()->filter($isEven)->take(5)); // [2, 4, 6, 8, 10]
+
+$fibonacci = call_user_func(function () {
+    $y = 1;
+
+    return $f = function ($x) use (&$f, &$y) {
+        $z = $y;
+        $y += $x;
+
+        return new Stream($z, function ($x) use (&$f) { return $f($x); });
+    };
+});
+
+sprint((new Stream(0, $fibonacci))->take(5)); // [0, 1, 1, 2, 3]
+~~~
+
+As you can see using a class-based approach, coupled with a tail promise requires use to provide alot of bolierplate code to create the iteratable, along with clouding the subject problem.
+
+### Generator Approach
+
+Fortuantly since PHP 5.5 we are able to now take advantage of generators and instead create a more succeient implementation which descirables the actions in a far easier manner.
+
+~~~ .php
+function stream($x, callable $f)
+{
+    while (true) {
+        yield $x;
+        $x = call_user_func($f, $x);
+    }
+}
+
+function map(callable $f, Generator $g)
+{
+    while ($g->valid()) {
+        yield call_user_func($f, $g->current());
+        $g->next();
+    }
+}
+
+function filter(callable $f, Generator $g)
+{
+    while ($g->valid()) {
+        if (call_user_func($f, $g->current())) yield $g->current();
+        $g->next();
+    }
+}
+
+function take($n, Generator $g)
+{
+    while ($n--) {
+        yield $g->current();
+        $g->next();
+    }
+}
+
+function srange($start = 1, $end = INF)
+{
+    return take($end - $start + 1, stream($start, function ($x) { return $x + 1; }));
+}
+~~~
+
+As you can see we have flattened the class strucuture into simple top-level functions instead.
+Each function, aided by type-hints descrives what it is tasked with completing in a far better way.
+Using generators not only removes the need for a tail promise but also takes care of implementing the iterable interface.
+Next we will be using this implementation to clean-up and run the examples used in the first one.
+
+~~~ .php
+$isEven = function ($x) { return $x % 2 == 0; };
+
+sprint(take(10, filter($isEven, srange())));
+
+$fibonacci = call_user_func(function () {
+    $y = 1;
+
+    return function ($x) use (&$y) {
+        $z = $y;
+        $y += $x;
+        return $z;
+    };
+});
+
+sprint(take(10, stream(0, $fibonacci)));
+~~~
+
+As you can see looking at the above examples, the fibinacci sequenece code has become alot simplier.
+Removing the need to return a new stream instance we are instead able to just focus on generation of the only the next value.
