@@ -2,7 +2,7 @@
 
 require '../vendor/autoload.php';
 
-$request = trim($_SERVER['REQUEST_URI'], '/');
+$request = trim(strtok($_SERVER['REQUEST_URI'], '?'), '/');
 
 if (preg_match('/^page\/[1-9][0-9]*$/', $request)) {
     $page = (int) explode('/', $request)[1];
